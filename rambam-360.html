@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="רמב״ם 360 – פורטל המידע, הניהול, ההתמצאות והשירותים השוטף של הקריה הרפואית רמב״ם">
+<title>רמב״ם 360 | פורטל הניהול, השירותים והמחקר</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Assistant', 'Heebo', 'system-ui', 'sans-serif'],
+        display: ['Heebo', 'Assistant', 'sans-serif']
+      },
+      colors: {
+        rambam: {
+          50:  '#fdf2f7',
+          100: '#fce7f1',
+          200: '#fbcfe4',
+          300: '#f9a8cd',
+          400: '#f472ae',
+          500: '#e8398f',
+          600: '#d91b76',
+          700: '#b81260',
+          800: '#96104f',
+          900: '#6d0a39'
+        },
+        deepv: {
+          500: '#7b2d8e',
+          600: '#632374',
+          700: '#4c1a5c',
+          800: '#371343',
+          900: '#241030'
+        },
+        ink: {
+          50:  '#f7f8fb',
+          100: '#eef0f6',
+          200: '#dfe3ee',
+          400: '#8b93a9',
+          600: '#4b5468',
+          800: '#232a3b',
+          900: '#141827'
+        }
+      },
+      boxShadow: {
+        soft: '0 4px 24px -6px rgba(109, 10, 57, .10), 0 2px 8px -4px rgba(20,24,39,.06)',
+        lift: '0 18px 44px -14px rgba(109, 10, 57, .28), 0 6px 16px -8px rgba(20,24,39,.10)',
+        glass: 'inset 0 1px 0 0 rgba(255,255,255,.65), 0 10px 34px -12px rgba(109,10,57,.18)'
+      },
+      borderRadius: { '4xl': '2rem' },
+      keyframes: {
+        floatUp: { '0%': { opacity: '0', transform: 'translateY(14px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+        popIn:   { '0%': { opacity: '0', transform: 'scale(.94) translateY(10px)' }, '100%': { opacity: '1', transform: 'scale(1) translateY(0)' } },
+        pulseRing: { '0%': { transform: 'scale(.85)', opacity: '.7' }, '70%': { transform: 'scale(1.35)', opacity: '0' }, '100%': { opacity: '0' } },
+        shimmer: { '0%': { backgroundPosition: '200% 0' }, '100%': { backgroundPosition: '-200% 0' } }
+      },
+      animation: {
+        floatUp: 'floatUp .45s cubic-bezier(.22,1,.36,1) both',
+        popIn: 'popIn .28s cubic-bezier(.22,1,.36,1) both',
+        pulseRing: 'pulseRing 2.2s ease-out infinite',
+        shimmer: 'shimmer 2.6s linear infinite'
+      }
+    }
+  }
+}
+</script>
+<style>
+  :root { color-scheme: light; }
+  html { scroll-behavior: smooth; }
+  body {
+    background:
+      radial-gradient(1200px 620px at 92% -8%, rgba(217,27,118,.14), transparent 60%),
+      radial-gradient(900px 520px at 4% 4%, rgba(123,45,142,.13), transparent 60%),
+      radial-gradient(760px 460px at 50% 108%, rgba(232,57,143,.10), transparent 62%),
+      #f6f7fb;
+    background-attachment: fixed;
+  }
+  .glass {
+    background: rgba(255,255,255,.72);
+    backdrop-filter: blur(18px) saturate(165%);
+    -webkit-backdrop-filter: blur(18px) saturate(165%);
+    border: 1px solid rgba(255,255,255,.72);
+  }
+  .glass-dark {
+    background: linear-gradient(135deg, rgba(109,10,57,.94), rgba(76,26,92,.92));
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+  }
+  .card-hover { transition: transform .32s cubic-bezier(.22,1,.36,1), box-shadow .32s cubic-bezier(.22,1,.36,1), border-color .32s; }
+  .card-hover:hover { transform: translateY(-4px); }
+  @media (hover: none) { .card-hover:hover { transform: none; } }
+  mark.hit { background: linear-gradient(180deg, transparent 58%, #fbcfe4 58%); color: inherit; border-radius: 3px; padding: 0 1px; }
+  [hidden] { display: none !important; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .thin-scroll::-webkit-scrollbar { width: 7px; height: 7px; }
+  .thin-scroll::-webkit-scrollbar-thumb { background: #e3c3d5; border-radius: 99px; }
+  .thin-scroll::-webkit-scrollbar-track { background: transparent; }
+  .tab-btn[aria-selected="true"] {
+    background: linear-gradient(135deg, #d91b76, #7b2d8e);
+    color: #fff;
+    box-shadow: 0 12px 26px -10px rgba(184,18,96,.62);
+  }
+  .tab-btn[aria-selected="true"] .tab-ico { background: rgba(255,255,255,.22); color:#fff; }
+  .bldg { cursor: pointer; transition: fill .25s, stroke .25s, transform .25s; transform-box: fill-box; transform-origin: center; }
+  .bldg:hover { transform: translateY(-2px); }
+  .bldg.active > rect { stroke: #b81260; stroke-width: 3; }
+  .bldg:focus-visible > rect { stroke: #241030; stroke-width: 3; }
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .chev { transform: rotate(180deg); }
+  .chev { transition: transform .25s ease; }
+  .brand-line { background: linear-gradient(90deg,#b81260,#d91b76,#7b2d8e,#d91b76); background-size: 300% 100%; animation: shimmer 6s linear infinite; }
+  .fab-ring::before {
+    content:''; position:absolute; inset:0; border-radius:9999px;
+    border: 2px solid rgba(217,27,118,.55); animation: pulseRing 2.2s ease-out infinite;
+  }
+  .bubble-bot  { border-radius: 18px 18px 5px 18px; }   /* זנב מימין — בועת העוזר */
+  .bubble-user { border-radius: 18px 18px 18px 5px; }   /* זנב משמאל — בועת המשתמש */
+  .kbd { font-family: ui-monospace, Menlo, monospace; font-size: 11px; border:1px solid #dfe3ee; border-bottom-width:2px; border-radius:6px; padding:1px 6px; color:#4b5468; background:#fff; }
+  @media print { .no-print { display: none !important; } }
+  *:focus-visible { outline: 2.5px solid #d91b76; outline-offset: 2px; border-radius: 8px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body class="font-sans text-ink-800 antialiased min-h-screen">
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:right-3 focus:z-[100] focus:bg-rambam-700 focus:text-white focus:px-4 focus:py-2 focus:rounded-xl">דלג לתוכן המרכזי</a>
+
+<!-- ============================ HEADER ============================ -->
+<header class="sticky top-0 z-50 no-print">
+  <div class="brand-line h-1 w-full"></div>
+  <div class="glass shadow-soft border-b border-white/60">
+    <div class="max-w-[1500px] mx-auto px-3 sm:px-5 lg:px-8">
+      <div class="flex items-center gap-3 lg:gap-6 h-[68px] lg:h-[80px]">
+
+        <!-- Mobile menu -->
+        <button id="menuBtn" class="lg:hidden shrink-0 w-10 h-10 grid place-items-center rounded-xl bg-white/80 border border-ink-200 text-ink-600 hover:text-rambam-700 hover:border-rambam-300 transition" aria-label="פתיחת תפריט ניווט" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+
+        <!-- Logo + title -->
+        <a href="#main" class="flex items-center gap-3 shrink-0 group">
+          <div class="relative w-11 h-11 lg:w-[52px] lg:h-[52px] rounded-2xl grid place-items-center text-white shadow-lift"
+               style="background:linear-gradient(135deg,#b81260 0%,#d91b76 45%,#7b2d8e 100%)">
+            <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path d="M16 3.6 4.8 9.2v8.1c0 6.6 4.6 10.5 11.2 12.3 6.6-1.8 11.2-5.7 11.2-12.3V9.2L16 3.6Z" stroke="#fff" stroke-width="1.9" stroke-linejoin="round" opacity=".95"/>
+              <path d="M16 10.4v10.4M10.8 15.6h10.4" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+            </svg>
+            <span class="absolute -bottom-1 -left-1 text-[9px] font-black bg-white text-rambam-700 rounded-md px-1 shadow-soft">360</span>
+          </div>
+          <div class="leading-tight hidden sm:block">
+            <div class="font-display font-black text-[17px] lg:text-[20px] tracking-tight text-ink-900">
+              רמב״ם <span class="bg-clip-text text-transparent" style="background-image:linear-gradient(90deg,#b81260,#7b2d8e)">360</span>
+            </div>
+            <div class="text-[10.5px] lg:text-[11.5px] text-ink-400 font-semibold">פורטל הניהול, השירותים והמחקר</div>
+          </div>
+        </a>
+
+        <!-- Search -->
+        <div class="flex-1 min-w-0 relative">
+          <div class="relative group">
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-ink-400 group-focus-within:text-rambam-600 transition pointer-events-none">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+            </span>
+            <input id="globalSearch" type="search" autocomplete="off" spellcheck="false"
+              class="w-full h-11 lg:h-[52px] pr-12 pl-24 rounded-2xl bg-white/85 border border-ink-200 shadow-soft
+                     text-[14px] lg:text-[15.5px] placeholder:text-ink-400 font-medium
+                     focus:bg-white focus:border-rambam-400 focus:ring-4 focus:ring-rambam-100 transition-all outline-none"
+              placeholder="חיפוש מהיר: נהלים, מערכות, בעלי תפקידים, טפסים, מבנים…" aria-label="חיפוש מהיר בפורטל">
+            <div class="absolute left-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
+              <button id="clearSearch" class="hidden w-7 h-7 rounded-lg grid place-items-center text-ink-400 hover:text-rambam-700 hover:bg-rambam-50 transition" aria-label="ניקוי חיפוש">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+              </button>
+              <span class="hidden md:inline-flex kbd">/</span>
+            </div>
+          </div>
+          <div id="searchStatus" class="hidden absolute top-[calc(100%+8px)] right-0 left-0 z-40 glass rounded-2xl shadow-lift px-4 py-3 text-[13px] font-semibold text-ink-600 flex items-center justify-between gap-3 animate-popIn">
+            <span id="searchCount"></span>
+            <button id="resetSearchLink" class="text-rambam-700 hover:text-rambam-800 font-bold text-[12.5px] underline underline-offset-4">איפוס וחזרה לפורטל</button>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+          <button id="helpTop" class="hidden xl:grid w-10 h-10 place-items-center rounded-xl bg-white/80 border border-ink-200 text-ink-600 hover:text-rambam-700 hover:border-rambam-300 transition" title="עוזר דיגיטלי" aria-label="פתיחת העוזר הדיגיטלי">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M9.1 9a3 3 0 1 1 4.2 2.7c-.8.4-1.3 1.1-1.3 2"/><circle cx="12" cy="17.3" r=".9" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="9.2"/></svg>
+          </button>
+
+          <!-- Notifications -->
+          <div class="relative">
+            <button id="notifBtn" class="relative w-10 h-10 grid place-items-center rounded-xl bg-white/80 border border-ink-200 text-ink-600 hover:text-rambam-700 hover:border-rambam-300 transition" aria-label="התראות מערכת" aria-expanded="false">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8.6a6 6 0 1 0-12 0c0 6-2.2 7.4-2.2 7.4h16.4S18 14.6 18 8.6"/><path d="M13.7 19.6a2 2 0 0 1-3.4 0"/></svg>
+              <span class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-rambam-600 text-white text-[10px] font-black grid place-items-center shadow-soft ring-2 ring-white">4</span>
+            </button>
+            <div id="notifPanel" class="hidden absolute left-0 mt-3 w-[330px] sm:w-[380px] glass rounded-3xl shadow-lift overflow-hidden animate-popIn z-50">
+              <div class="px-4 py-3 border-b border-ink-200/70 flex items-center justify-between">
+                <span class="font-display font-black text-[14.5px]">התראות מערכת</span>
+                <span class="text-[11px] font-bold text-rambam-700 bg-rambam-50 px-2 py-0.5 rounded-full">4 חדשות</span>
+              </div>
+              <div class="max-h-[340px] overflow-y-auto thin-scroll divide-y divide-ink-100">
+                <div class="px-4 py-3 hover:bg-rambam-50/50 transition">
+                  <div class="flex gap-3">
+                    <span class="mt-1 w-2 h-2 rounded-full bg-rambam-600 shrink-0"></span>
+                    <div>
+                      <p class="text-[13px] font-bold text-ink-900">ועדת טכנולוגיות רפואיות – מועד הגשה</p>
+                      <p class="text-[12px] text-ink-600 leading-relaxed">חלון ההגשה לישיבת הרבעון נסגר ב-14 בחודש. בקשות שיוגשו לאחר מכן ידונו במועד הבא.</p>
+                      <span class="text-[11px] text-ink-400 font-semibold">לפני שעתיים</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="px-4 py-3 hover:bg-rambam-50/50 transition">
+                  <div class="flex gap-3">
+                    <span class="mt-1 w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
+                    <div>
+                      <p class="text-[13px] font-bold text-ink-900">מערכת קמיליון – חלון תחזוקה</p>
+                      <p class="text-[12px] text-ink-600 leading-relaxed">עדכון גרסה בליל שבת 23:30–02:00. בזמן זה יש לעבוד בנוהל השבתה (Downtime) ולתעד בטפסי גיבוי.</p>
+                      <span class="text-[11px] text-ink-400 font-semibold">אתמול</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="px-4 py-3 hover:bg-rambam-50/50 transition">
+                  <div class="flex gap-3">
+                    <span class="mt-1 w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+                    <div>
+                      <p class="text-[13px] font-bold text-ink-900">תלוש שכר זמין לצפייה</p>
+                      <p class="text-[12px] text-ink-600 leading-relaxed">תלוש החודש עלה לאזור האישי. הפרשי כוננויות מהחודש הקודם שולמו במלואם.</p>
+                      <span class="text-[11px] text-ink-400 font-semibold">לפני 3 ימים</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="px-4 py-3 hover:bg-rambam-50/50 transition">
+                  <div class="flex gap-3">
+                    <span class="mt-1 w-2 h-2 rounded-full bg-deepv-500 shrink-0"></span>
+                    <div>
+                      <p class="text-[13px] font-bold text-ink-900">הסעות צוות – שינוי מסלול</p>
+                      <p class="text-[12px] text-ink-600 leading-relaxed">קו הבוקר מקריות עובר לרציף 2 בשער המזרחי החל מיום ראשון. עדכון אוטומטי במערכת קש״ב.</p>
+                      <span class="text-[11px] text-ink-400 font-semibold">לפני 4 ימים</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="px-4 py-2.5 bg-white/70 border-t border-ink-200/70 text-center">
+                <button class="text-[12.5px] font-bold text-rambam-700 hover:text-rambam-800">לכל ההתראות ולארכיון</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile -->
+          <div class="relative">
+            <button id="profileBtn" class="flex items-center gap-2.5 rounded-2xl bg-white/80 border border-ink-200 hover:border-rambam-300 transition ps-2 pe-1.5 py-1.5" aria-label="תפריט משתמש" aria-expanded="false">
+              <div class="text-right hidden md:block leading-tight">
+                <div class="text-[13px] font-extrabold text-ink-900">ד״ר אירה בלום</div>
+                <div class="text-[10.5px] text-ink-400 font-semibold">מחלקת מחקר ופיתוח</div>
+              </div>
+              <div class="w-9 h-9 rounded-xl grid place-items-center text-white font-black text-[13px] shadow-soft" style="background:linear-gradient(135deg,#d91b76,#7b2d8e)">א״ב</div>
+            </button>
+            <div id="profilePanel" class="hidden absolute left-0 mt-3 w-[290px] glass rounded-3xl shadow-lift overflow-hidden animate-popIn z-50">
+              <div class="px-4 py-4 border-b border-ink-200/70 flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl grid place-items-center text-white font-black shadow-soft" style="background:linear-gradient(135deg,#d91b76,#7b2d8e)">א״ב</div>
+                <div class="leading-tight">
+                  <div class="font-display font-black text-[15px]">ד״ר אירה בלום</div>
+                  <div class="text-[11.5px] text-ink-600 font-semibold">חוקרת ראשית · מחקר ופיתוח</div>
+                  <div class="text-[11px] text-ink-400">מס׳ עובד 44182 · שלוחה 3907</div>
+                </div>
+              </div>
+              <div class="p-2">
+                <button class="w-full text-right px-3 py-2.5 rounded-xl hover:bg-rambam-50 text-[13px] font-semibold flex items-center gap-2.5 transition"><span class="text-rambam-600">◈</span> האזור האישי ותלושי שכר</button>
+                <button class="w-full text-right px-3 py-2.5 rounded-xl hover:bg-rambam-50 text-[13px] font-semibold flex items-center gap-2.5 transition"><span class="text-rambam-600">◈</span> דיווח נוכחות ובקשות חופשה</button>
+                <button class="w-full text-right px-3 py-2.5 rounded-xl hover:bg-rambam-50 text-[13px] font-semibold flex items-center gap-2.5 transition"><span class="text-rambam-600">◈</span> המחקרים שלי ב״מטרות״</button>
+                <button class="w-full text-right px-3 py-2.5 rounded-xl hover:bg-rambam-50 text-[13px] font-semibold flex items-center gap-2.5 transition"><span class="text-rambam-600">◈</span> הגדרות והרשאות</button>
+              </div>
+              <div class="px-2 pb-2">
+                <button class="w-full text-right px-3 py-2.5 rounded-xl text-[13px] font-bold text-rambam-700 hover:bg-rambam-50 transition">יציאה מהמערכת</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================ MOBILE DRAWER ============================ -->
+<div id="drawerOverlay" class="hidden fixed inset-0 z-[90] bg-ink-900/40 backdrop-blur-sm lg:hidden no-print"></div>
+<aside id="drawer" class="fixed top-0 right-0 z-[95] h-full w-[290px] translate-x-full transition-transform duration-300 ease-out lg:hidden no-print">
+  <div class="h-full glass-dark text-white p-5 flex flex-col shadow-lift">
+    <div class="flex items-center justify-between mb-6">
+      <div class="font-display font-black text-lg">ניווט מהיר</div>
+      <button id="drawerClose" class="w-9 h-9 grid place-items-center rounded-xl bg-white/15 hover:bg-white/25 transition" aria-label="סגירת תפריט">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <nav class="flex-1 space-y-1.5 overflow-y-auto thin-scroll" id="drawerNav">
+      <button data-goto="org"      class="w-full text-right px-4 py-3 rounded-2xl bg-white/10 hover:bg-white/20 transition font-bold text-[14px]">על הארגון · אנשים וסמכויות</button>
+      <button data-goto="systems"  class="w-full text-right px-4 py-3 rounded-2xl bg-white/10 hover:bg-white/20 transition font-bold text-[14px]">מערכות ושירותים תפעוליים</button>
+      <button data-goto="rights"   class="w-full text-right px-4 py-3 rounded-2xl bg-white/10 hover:bg-white/20 transition font-bold text-[14px]">זכויות, שכר והסכמים</button>
+      <button data-goto="research" class="w-full text-right px-4 py-3 rounded-2xl bg-white/10 hover:bg-white/20 transition font-bold text-[14px]">שירותי החוקר והמחקר הקליני</button>
+      <a href="#wayfinding" class="block px-4 py-3 rounded-2xl bg-white/10 hover:bg-white/20 transition font-bold text-[14px]">התמצאות בקמפוס ומתקנים</a>
+      <a href="#quicklinks" class="block px-4 py-3 rounded-2xl bg-white/10 hover:bg-white/20 transition font-bold text-[14px]">קיצורי דרך ומספרי חירום</a>
+    </nav>
+    <div class="mt-5 pt-5 border-t border-white/20">
+      <div class="text-[11.5px] text-white/70 font-semibold leading-relaxed">מוקד מחשוב 4444 · מוקד ביטחון 3333<br>קוד כחול (החייאה) 2222</div>
+    </div>
+  </div>
+</aside>
+
+<main id="main" class="max-w-[1500px] mx-auto px-3 sm:px-5 lg:px-8 pb-28 lg:pb-32">
+
+  <!-- ============================ HERO ============================ -->
+  <section id="hero" class="mt-5 lg:mt-8 animate-floatUp">
+    <div class="relative overflow-hidden rounded-4xl shadow-lift" style="background:linear-gradient(120deg,#6d0a39 0%,#b81260 42%,#7b2d8e 100%)">
+      <div class="absolute inset-0 opacity-40 pointer-events-none" style="background:radial-gradient(600px 300px at 88% 0%, rgba(255,255,255,.35), transparent 60%), radial-gradient(520px 300px at 10% 100%, rgba(255,255,255,.20), transparent 62%)"></div>
+      <svg class="absolute -left-10 -bottom-16 w-[420px] h-[420px] opacity-[.13] pointer-events-none" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+        <circle cx="100" cy="100" r="86" stroke="#fff" stroke-width="1.4"/>
+        <circle cx="100" cy="100" r="62" stroke="#fff" stroke-width="1.4"/>
+        <circle cx="100" cy="100" r="38" stroke="#fff" stroke-width="1.4"/>
+        <path d="M14 100h172M100 14v172" stroke="#fff" stroke-width="1.1"/>
+      </svg>
+
+      <div class="relative p-6 sm:p-9 lg:p-12 grid lg:grid-cols-[1.35fr_1fr] gap-8 items-center">
+        <div class="text-white">
+          <div class="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/25 px-3.5 py-1.5 text-[11.5px] font-bold mb-4 backdrop-blur">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse"></span>
+            כל המערכות תקינות · עודכן היום 07:45
+          </div>
+          <h1 class="font-display font-black text-[26px] sm:text-[34px] lg:text-[42px] leading-[1.12] tracking-tight">
+            בוקר טוב, ד״ר בלום.<br>
+            <span class="text-white/85">כל הקריה הרפואית — במסך אחד.</span>
+          </h1>
+          <p class="mt-3.5 text-[14px] sm:text-[15.5px] text-white/80 max-w-[54ch] leading-relaxed font-medium">
+            רמב״ם 360 מרכז את מוקדי הסמכות בארגון, המערכות התפעוליות, זכויות העובד ושירותי המחקר הקליני —
+            יחד עם התמצאות פיזית בקמפוס. חיפוש אחד, תשובה אחת, בלי לחפש את הטלפון של מי שיודע.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-2.5">
+            <button data-goto="systems" class="rounded-2xl bg-white text-rambam-700 px-5 py-3 text-[13.5px] font-extrabold shadow-lift hover:bg-rambam-50 transition">פתיחת קריאה במערכות הליבה</button>
+            <button data-goto="research" class="rounded-2xl bg-white/15 border border-white/30 text-white px-5 py-3 text-[13.5px] font-extrabold hover:bg-white/25 transition backdrop-blur">הגשת פרוטוקול לוועדת הלסינקי</button>
+            <a href="#wayfinding" class="rounded-2xl bg-white/15 border border-white/30 text-white px-5 py-3 text-[13.5px] font-extrabold hover:bg-white/25 transition backdrop-blur">איך מגיעים למגדל סמי עופר?</a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="glass rounded-3xl p-4 shadow-glass">
+            <div class="text-[11px] font-bold text-ink-400">מחקרים קליניים פעילים</div>
+            <div class="font-display font-black text-[30px] leading-none mt-1.5 text-rambam-700">742</div>
+            <div class="text-[11px] font-semibold text-emerald-600 mt-1">▲ 6.4% מול הרבעון הקודם</div>
+          </div>
+          <div class="glass rounded-3xl p-4 shadow-glass">
+            <div class="text-[11px] font-bold text-ink-400">בקשות בוועדת טכנולוגיות</div>
+            <div class="font-display font-black text-[30px] leading-none mt-1.5 text-deepv-600">28</div>
+            <div class="text-[11px] font-semibold text-ink-600 mt-1">מתוכן 9 ממתינות למסמכים</div>
+          </div>
+          <div class="glass rounded-3xl p-4 shadow-glass">
+            <div class="text-[11px] font-bold text-ink-400">זמן מענה ממוצע – מוקד מחשוב</div>
+            <div class="font-display font-black text-[30px] leading-none mt-1.5 text-rambam-700">11<span class="text-[15px] font-bold"> דק׳</span></div>
+            <div class="text-[11px] font-semibold text-emerald-600 mt-1">עומד ביעד ה-SLA (15 דק׳)</div>
+          </div>
+          <div class="glass rounded-3xl p-4 shadow-glass">
+            <div class="text-[11px] font-bold text-ink-400">הסעות צוות שהוזמנו השבוע</div>
+            <div class="font-display font-black text-[30px] leading-none mt-1.5 text-deepv-600">1,340</div>
+            <div class="text-[11px] font-semibold text-ink-600 mt-1">דרך מערכת קש״ב</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ QUICK LINKS ============================ -->
+  <section id="quicklinks" class="mt-6 lg:mt-8">
+    <div class="flex items-end justify-between gap-4 mb-3.5">
+      <h2 class="font-display font-black text-[18px] lg:text-[21px] tracking-tight">קיצורי דרך שנעשה בהם שימוש יומיומי</h2>
+      <span class="hidden sm:block text-[12px] font-semibold text-ink-400">לחיצה אחת מכל מסך בפורטל</span>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
+      <button data-goto="systems" data-searchable data-tags="קמיליון תיק רפואי ממוחשב רשומה קלינית מטופל" class="group glass rounded-3xl p-4 text-right shadow-soft card-hover hover:shadow-lift border-white/70 hover:border-rambam-200">
+        <div class="w-11 h-11 rounded-2xl grid place-items-center mb-3 text-white shadow-soft" style="background:linear-gradient(135deg,#d91b76,#b81260)">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h10a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-13a2 2 0 0 1 2-2Z"/><path d="M12 8.4v6.2M8.9 11.5h6.2"/></svg>
+        </div>
+        <div class="font-extrabold text-[14px] text-ink-900">קמיליון</div>
+        <div class="text-[11.5px] text-ink-400 font-semibold mt-0.5">תיק רפואי ממוחשב</div>
+      </button>
+      <button data-goto="systems" data-searchable data-tags="קשב הסעות נסיעה מונית צוות קליני תורנות" class="group glass rounded-3xl p-4 text-right shadow-soft card-hover hover:shadow-lift border-white/70 hover:border-rambam-200">
+        <div class="w-11 h-11 rounded-2xl grid place-items-center mb-3 text-white shadow-soft" style="background:linear-gradient(135deg,#7b2d8e,#4c1a5c)">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 15.5h14.8M6 15.5V9.2l1.7-3.4h8.6L18 9.2v6.3"/><circle cx="8" cy="18" r="1.5"/><circle cx="16" cy="18" r="1.5"/></svg>
+        </div>
+        <div class="font-extrabold text-[14px] text-ink-900">קש״ב</div>
+        <div class="text-[11.5px] text-ink-400 font-semibold mt-0.5">הזמנת הסעות לצוות</div>
+      </button>
+      <button data-goto="research" data-searchable data-tags="מטרות הלסינקי פרוטוקול מחקר אישור ועדה" class="group glass rounded-3xl p-4 text-right shadow-soft card-hover hover:shadow-lift border-white/70 hover:border-rambam-200">
+        <div class="w-11 h-11 rounded-2xl grid place-items-center mb-3 text-white shadow-soft" style="background:linear-gradient(135deg,#b81260,#7b2d8e)">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5v5.2L5.2 17a2.4 2.4 0 0 0 2.1 3.5h9.4a2.4 2.4 0 0 0 2.1-3.5l-4.3-8.3V3.5"/><path d="M8.4 3.5h7.2M8 13.6h8"/></svg>
+        </div>
+        <div class="font-extrabold text-[14px] text-ink-900">מטרות</div>
+        <div class="text-[11.5px] text-ink-400 font-semibold mt-0.5">ועדת הלסינקי ומחקר</div>
+      </button>
+      <button data-goto="rights" data-searchable data-tags="תלוש שכר חילן נוכחות דיווח שעות" class="group glass rounded-3xl p-4 text-right shadow-soft card-hover hover:shadow-lift border-white/70 hover:border-rambam-200">
+        <div class="w-11 h-11 rounded-2xl grid place-items-center mb-3 text-white shadow-soft" style="background:linear-gradient(135deg,#e8398f,#d91b76)">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="3.6" y="5" width="16.8" height="14" rx="2.2"/><path d="M3.6 9.6h16.8M7.4 14.2h4"/></svg>
+        </div>
+        <div class="font-extrabold text-[14px] text-ink-900">תלוש ונוכחות</div>
+        <div class="text-[11.5px] text-ink-400 font-semibold mt-0.5">אזור אישי · חילן</div>
+      </button>
+      <button data-goto="systems" data-searchable data-tags="רכש לוגיסטיקה הזמנת ציוד מלאי אספקה דרישה" class="group glass rounded-3xl p-4 text-right shadow-soft card-hover hover:shadow-lift border-white/70 hover:border-rambam-200">
+        <div class="w-11 h-11 rounded-2xl grid place-items-center mb-3 text-white shadow-soft" style="background:linear-gradient(135deg,#96104f,#6d0a39)">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.4 12 3.6l8 3.8v9.2L12 20.4 4 16.6V7.4Z"/><path d="m4 7.4 8 3.9 8-3.9M12 11.3v9.1"/></svg>
+        </div>
+        <div class="font-extrabold text-[14px] text-ink-900">רכש ולוגיסטיקה</div>
+        <div class="text-[11.5px] text-ink-400 font-semibold mt-0.5">דרישות רכש ומלאי</div>
+      </button>
+      <a href="#wayfinding" data-searchable data-tags="מפה קמפוס התמצאות חניון סמי עופר ניווט" class="group glass rounded-3xl p-4 text-right shadow-soft card-hover hover:shadow-lift border-white/70 hover:border-rambam-200 block">
+        <div class="w-11 h-11 rounded-2xl grid place-items-center mb-3 text-white shadow-soft" style="background:linear-gradient(135deg,#4c1a5c,#241030)">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M9.4 4.4 3.8 6.6v13l5.6-2.2 5.2 2.2 5.6-2.2v-13l-5.6 2.2-5.2-2.2Z"/><path d="M9.4 4.4v13M14.6 6.6v13"/></svg>
+        </div>
+        <div class="font-extrabold text-[14px] text-ink-900">מפת הקמפוס</div>
+        <div class="text-[11.5px] text-ink-400 font-semibold mt-0.5">התמצאות ומתקנים</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================ TABS NAV ============================ -->
+  <section id="worlds" class="mt-9 lg:mt-12">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-3 mb-4">
+      <div>
+        <h2 class="font-display font-black text-[21px] lg:text-[26px] tracking-tight">ארבעת עולמות התוכן של הפורטל</h2>
+        <p class="text-[13.5px] text-ink-600 font-medium mt-1">כל מה שעובד, מנהל או חוקר ברמב״ם צריך — מסודר לפי הדבר שהוא בא לעשות, לא לפי מבנה ארגוני.</p>
+      </div>
+      <div class="text-[12px] font-semibold text-ink-400 shrink-0">עודכן לאחרונה: 30 באוגוסט · אגף משאבי אנוש ומערכות מידע</div>
+    </div>
+
+    <div class="glass rounded-4xl p-2 shadow-soft mb-6 overflow-x-auto no-scrollbar" role="tablist" aria-label="עולמות התוכן">
+      <div class="flex gap-2 min-w-max lg:min-w-0">
+        <button class="tab-btn flex-1 min-w-[210px] flex items-center gap-3 px-4 py-3.5 rounded-3xl text-right transition-all duration-300 hover:bg-white/70" role="tab" id="tab-org" aria-controls="panel-org" aria-selected="true" data-tab="org">
+          <span class="tab-ico w-10 h-10 rounded-2xl grid place-items-center bg-rambam-50 text-rambam-700 shrink-0 transition">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.4" r="3.2"/><path d="M5 19.4c0-3.4 3.1-5.6 7-5.6s7 2.2 7 5.6"/></svg>
+          </span>
+          <span class="leading-tight">
+            <span class="block font-extrabold text-[14px]">א. על הארגון</span>
+            <span class="block text-[11.5px] opacity-75 font-semibold">אנשים, תפקידים וסמכויות</span>
+          </span>
+        </button>
+        <button class="tab-btn flex-1 min-w-[210px] flex items-center gap-3 px-4 py-3.5 rounded-3xl text-right transition-all duration-300 hover:bg-white/70" role="tab" id="tab-systems" aria-controls="panel-systems" aria-selected="false" data-tab="systems">
+          <span class="tab-ico w-10 h-10 rounded-2xl grid place-items-center bg-rambam-50 text-rambam-700 shrink-0 transition">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="3.4" y="4.4" width="17.2" height="12" rx="2"/><path d="M8.4 20h7.2M12 16.4V20"/></svg>
+          </span>
+          <span class="leading-tight">
+            <span class="block font-extrabold text-[14px]">ב. מערכות ושירותים</span>
+            <span class="block text-[11.5px] opacity-75 font-semibold">הליבה התפעולית היומיומית</span>
+          </span>
+        </button>
+        <button class="tab-btn flex-1 min-w-[210px] flex items-center gap-3 px-4 py-3.5 rounded-3xl text-right transition-all duration-300 hover:bg-white/70" role="tab" id="tab-rights" aria-controls="panel-rights" aria-selected="false" data-tab="rights">
+          <span class="tab-ico w-10 h-10 rounded-2xl grid place-items-center bg-rambam-50 text-rambam-700 shrink-0 transition">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6v16.8M5.2 8.4h13.6"/><path d="M8.6 8.4 5.8 14.6h5.6L8.6 8.4ZM15.4 8.4l-2.8 6.2h5.6l-2.8-6.2Z"/></svg>
+          </span>
+          <span class="leading-tight">
+            <span class="block font-extrabold text-[14px]">ג. זכויות ושכר</span>
+            <span class="block text-[11.5px] opacity-75 font-semibold">שכר, נוכחות והסכמים</span>
+          </span>
+        </button>
+        <button class="tab-btn flex-1 min-w-[210px] flex items-center gap-3 px-4 py-3.5 rounded-3xl text-right transition-all duration-300 hover:bg-white/70" role="tab" id="tab-research" aria-controls="panel-research" aria-selected="false" data-tab="research">
+          <span class="tab-ico w-10 h-10 rounded-2xl grid place-items-center bg-rambam-50 text-rambam-700 shrink-0 transition">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M9.6 3.8v5.4l-4.3 8a2.3 2.3 0 0 0 2 3.4h9.4a2.3 2.3 0 0 0 2-3.4l-4.3-8V3.8"/><path d="M8.4 3.8h7.2"/></svg>
+          </span>
+          <span class="leading-tight">
+            <span class="block font-extrabold text-[14px]">ד. שירותי החוקר</span>
+            <span class="block text-[11.5px] opacity-75 font-semibold">מחקר קליני ומענקים</span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL א: על הארגון ==================== -->
+    <div id="panel-org" role="tabpanel" aria-labelledby="tab-org" class="tab-panel space-y-5">
+
+      <div class="grid lg:grid-cols-3 gap-5">
+        <!-- אינדקס בעלי תפקידים -->
+        <div class="lg:col-span-2 glass rounded-4xl shadow-soft overflow-hidden" data-searchable data-tags="אינדקס בעלי תפקידים טלפונים שלוחה כתובת פנייה מנהלים">
+          <div class="px-5 sm:px-6 py-5 border-b border-ink-200/60 flex items-start justify-between gap-4">
+            <div>
+              <h3 class="font-display font-black text-[17px] tracking-tight">אינדקס בעלי תפקידים וכתובות פנייה</h3>
+              <p class="text-[12.5px] text-ink-600 font-medium mt-1">מי אחראי על מה, לאן פונים ובאיזה ערוץ. סינון לפי תחום או חיפוש שם.</p>
+            </div>
+            <span class="hidden sm:inline-flex shrink-0 text-[11px] font-bold text-rambam-700 bg-rambam-50 border border-rambam-100 px-2.5 py-1 rounded-full">38 בעלי תפקיד</span>
+          </div>
+
+          <div class="px-5 sm:px-6 pt-4 flex flex-wrap gap-2" id="roleFilters">
+            <button class="role-filter px-3 py-1.5 rounded-full text-[12px] font-bold border transition bg-rambam-600 text-white border-rambam-600" data-filter="all">הכל</button>
+            <button class="role-filter px-3 py-1.5 rounded-full text-[12px] font-bold border border-ink-200 bg-white/70 text-ink-600 hover:border-rambam-300 transition" data-filter="hanhala">הנהלה</button>
+            <button class="role-filter px-3 py-1.5 rounded-full text-[12px] font-bold border border-ink-200 bg-white/70 text-ink-600 hover:border-rambam-300 transition" data-filter="clinic">מחלקות קליניות</button>
+            <button class="role-filter px-3 py-1.5 rounded-full text-[12px] font-bold border border-ink-200 bg-white/70 text-ink-600 hover:border-rambam-300 transition" data-filter="safety">בטיחות וסיכונים</button>
+            <button class="role-filter px-3 py-1.5 rounded-full text-[12px] font-bold border border-ink-200 bg-white/70 text-ink-600 hover:border-rambam-300 transition" data-filter="admin">מנהלה ומשאבי אנוש</button>
+          </div>
+
+          <div class="p-3 sm:p-4 grid sm:grid-cols-2 gap-3 max-h-[560px] overflow-y-auto thin-scroll" id="rolesGrid">
+
+            <div class="role-card bg-white/80 rounded-3xl p-4 border border-ink-100 card-hover hover:border-rambam-200 hover:shadow-soft" data-cat="hanhala" data-searchable data-tags="מנהל הקריה הרפואית לשכה הנהלה">
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-2xl grid place-items-center text-white font-black text-[12px] shrink-0" style="background:linear-gradient(135deg,#b81260,#7b2d8e)">לק</div>
+                <div class="min-w-0">
+                  <div class="font-extrabold text-[13.5px] text-ink-900">לשכת מנהל הקריה הרפואית</div>
+                  <div class="text-[12px] text-ink-600 font-semibold">הנהלה ראשית · בניין ההנהלה, קומה 2</div>
+                  <div class="mt-2 flex flex-wrap gap-1.5 text-[11px] font-bold">
+                    <span class="bg-rambam-50 text-rambam-700 px-2 py-0.5 rounded-lg">שלוחה 2100</span>
+                    <span class="bg-ink-100 text-ink-600 px-2 py-0.5 rounded-lg">מזכירות: ימים א׳–ה׳ 08:00–16:00</span>
+                  </div>
+                  <p class="text-[11.5px] text-ink-600 mt-2 leading-relaxed">פניות עקרוניות, אישורי חריגים ברמת הנהלה, ייצוג הקריה מול משרד הבריאות.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="role-card bg-white/80 rounded-3xl p-4 border border-ink-100 card-hover hover:border-rambam-200 hover:shadow-soft" data-cat="hanhala" data-searchable data-tags="ועדת טכנולוגיות רפואיות ויסמן אישור ציוד טכנולוגיה חדשה">
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-2xl grid place-items-center text-white font-black text-[12px] shrink-0" style="background:linear-gradient(135deg,#d91b76,#96104f)">ו״ט</div>
+                <div class="min-w-0">
+                  <div class="font-extrabold text-[13.5px] text-ink-900">ד״ר ויסמן — יו״ר ועדת טכנולוגיות רפואיות</div>
+                  <div class="text-[12px] text-ink-600 font-semibold">אישור ציוד וטכנולוגיות רפואיות</div>
+                  <div class="mt-2 flex flex-wrap gap-1.5 text-[11px] font-bold">
+                    <span class="bg-rambam-50 text-rambam-700 px-2 py-0.5 rounded-lg">שלוחה 2455</span>
+                    <span class="bg-ink-100 text-ink-600 px-2 py-0.5 rounded-lg">tech-committee@rambam</span>
+                  </div>
+                  <p class="text-[11.5px] text-ink-600 mt-2 leading-relaxed">כל הכנסה של ציוד, מכשיר או טכנולוגיה חדשה לשימוש קליני מחייבת אישור מוקדם של הוועדה — גם בתרומה וגם בהשאלה לניסוי.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="role-card bg-white/80 rounded-3xl p-4 border border-ink-100 card-hover hover:border-rambam-200 hover:shadow-soft" data-cat="safety" data-searchable data-tags="ממונה בטיחות וגיהות תאונת עבודה סיכונים סקר">
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-2xl grid place-items-center text-white font-black text-[12px] shrink-0" style="background:linear-gradient(135deg,#7b2d8e,#4c1a5c)">ב״ג</div>
+                <div class="min-w-0">
+                  <div class="font-extrabold text-[13.5px] text-ink-900">ממונה בטיחות וגיהות</div>
+                  <div class="text-[12px] text-ink-600 font-semibold">אגף הנדסה ותחזוקה · מבנה שירותים, קומה 0</div>
+                  <div class="mt-2 flex flex-wrap gap-1.5 text-[11px] font-bold">
+                    <span class="bg-rambam-50 text-rambam-700 px-2 py-0.5 rounded-lg">שלוחה 2870</span>
+                    <span class="bg-amber-50 text-amber-700 px-2 py-0.5 rounded-lg">דיווח תאונת עבודה תוך 24 שעות</span>
+                  </div>
+                  <p class="text-[11.5px] text-ink-600 mt-2 leading-relaxed">סקרי סיכונים במחלקות, חקירת אירועי בטיחות, הדרכות שנתיות וחומרים מסוכנים.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="role-card bg-white/80 rounded-3xl p-4 border border-ink-100 card-hover hover:border-rambam-200 hover:shadow-soft" data-cat="safety" data-searchable data-tags="בטיחות קרינה ממונה רנטגן מכון הדמיה רישוי">
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-2xl grid place-items-center text-white font-black text-[12px] shrink-0" style="background:linear-gradient(135deg,#96104f,#6d0a39)">ק</div>
+                <div class="min-w-0">
+                  <div class="font-extrabold text-[13.5px] text-ink-900">ממונה בטיחות קרינה</div>
+                  <div class="text-[12px] text-ink-600 font-semibold">מכון הדמיה · הבניין ההיסטורי, קומה 1−</div>
+                  <div class="mt-2 flex flex-wrap gap-1.5 text-[11px] font-bold">
+                    <span class="bg-rambam-50 text-rambam-700 px-2 py-0.5 rounded-lg">שלוחה 2612</span>
+                  </div>
+                  <p class="text-[11.5px] text-ink-600 mt-2 leading-relaxed">היתרי עבודה עם מקורות קרינה, מינון אישי (דוזימטר), אישור מכשור מייַנן לפני הפעלה.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="role-card bg-white/80 rounded-3xl p-4 border border-ink-100 card-hover hover:border-rambam-200 hover:shadow-soft" data-cat="safety" data-searchable data-tags="מניעת זיהומים אפידמיולוגיה בקרת זיהומים חיטוי בידוד">
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-2xl grid place-items-center text-white font-black text-[12px] shrink-0" style="background:linear-gradient(135deg,#e8398f,#b81260)">מ״ז</div>
+                <div class="min-w-0">
+                  <div class="font-extrabold text-[13.5px] text-ink-900">היחידה למניעת זיהומים</div>
+                  <div class="text-[12px] text-ink-600 font-semibold">אפידמיולוגיה קלינית · מגדל סמי עופר, קומה 3</div>
+                  <div class="mt-2 flex flex-wrap gap-1.5 text-[11px] font-bold">
+                    <span class="bg-rambam-50 text-rambam-700 px-2 py-0.5 rounded-lg">שלוחה 2340</span>
+                    <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-lg">כונן 24/7</span>
+                  </div>
+                  <p class="text-[11.5px] text-ink-600 mt-2 leading-relaxed">נוהלי בידוד, התפרצות חיידק עמיד, אישור חומרי חיטוי חדשים, חשיפת עובד לדם ונוזלי גוף.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="role-card bg-white/80 rounded-3xl p-4 border border-ink-100 card-hover hover:border-rambam-200 hover:shadow-soft" data-cat="admin" data-searchable data-tags="משאבי אנוש כוח אדם גיוס קליטה עובד חדש">
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-2xl grid place-items-center text-white font-black text-[12px] shrink-0" style="background:linear-gradient(135deg,#d91b76,#7b2d8e)">מ״א</div>
+                <div class="min-w-0">
+                  <div class="font-extrabold text-[13.5px] text-ink-900">אגף משאבי אנוש</div>
+                  <div class="text-[12px] text-ink-600 font-semibold">מבנה המנהלה, קומה 1</div>
+                  <div class="mt-2 flex flex-wrap gap-1.5 text-[11px] font-bold">
+                    <span class="bg-rambam-50 text-rambam-700 px-2 py-0.5 rounded-lg">שלוחה 2200</span>
+                    <span class="bg-ink-100 text-ink-600 px-2 py-0.5 rounded-lg">קבלת קהל: א׳,ג׳,ה׳ 09:00–13:00</span>
+                  </div>
+                  <p class="text-[11.5px] text-ink-600 mt-2 leading-relaxed">תנאי העסקה, ותק, מכרזים פנימיים, אישורי העסקה ואישורי מעסיק.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="role-card bg-white/80 rounded-3xl p-4 border border-ink-100 card-hover hover:border-rambam-200 hover:shadow-soft" data-cat="admin" data-searchable data-tags="מדור שכר תלוש חשבות ניכויים גמל השתלמות">
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-2xl grid place-items-center text-white font-black text-[12px] shrink-0" style="background:linear-gradient(135deg,#b81260,#96104f)">שכ</div>
+                <div class="min-w-0">
+                  <div class="font-extrabold text-[13.5px] text-ink-900">מדור שכר וחשבות</div>
+                  <div class="text-[12px] text-ink-600 font-semibold">מבנה המנהלה, קומה 1, חדר 118</div>
+                  <div class="mt-2 flex flex-wrap gap-1.5 text-[11px] font-bold">
+                    <span class="bg-rambam-50 text-rambam-700 px-2 py-0.5 rounded-lg">שלוחה 2215</span>
+                    <span class="bg-ink-100 text-ink-600 px-2 py-0.5 rounded-lg">salary@rambam</span>
+                  </div>
+                  <p class="text-[11.5px] text-ink-600 mt-2 leading-relaxed">בירורי תלוש, הפרשי כוננויות ותורנויות, ניכויים, קרן השתלמות והחזרי נסיעה.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="role-card bg-white/80 rounded-3xl p-4 border border-ink-100 card-hover hover:border-rambam-200 hover:shadow-soft" data-cat="clinic" data-searchable data-tags="מנהלי מחלקות רשימה כירורגיה פנימית ילדים מיון">
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-2xl grid place-items-center text-white font-black text-[12px] shrink-0" style="background:linear-gradient(135deg,#7b2d8e,#371343)">מ״מ</div>
+                <div class="min-w-0">
+                  <div class="font-extrabold text-[13.5px] text-ink-900">מנהלי מחלקות ויחידות קליניות</div>
+                  <div class="text-[12px] text-ink-600 font-semibold">מדריך מלא לפי אגפים</div>
+                  <div class="mt-2 flex flex-wrap gap-1.5 text-[11px] font-bold">
+                    <span class="bg-rambam-50 text-rambam-700 px-2 py-0.5 rounded-lg">מרכזייה 2000</span>
+                  </div>
+                  <p class="text-[11.5px] text-ink-600 mt-2 leading-relaxed">אגף פנימי, אגף כירורגי, אגף לב, אונקולוגיה, ילדים (בניין רות רפפורט), מיון מבוגרים וילדים, טיפול נמרץ, מכונים ומעבדות.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="role-card bg-white/80 rounded-3xl p-4 border border-ink-100 card-hover hover:border-rambam-200 hover:shadow-soft" data-cat="admin" data-searchable data-tags="נציבת קבילות הציבור תלונות פניות מטופלים">
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-2xl grid place-items-center text-white font-black text-[12px] shrink-0" style="background:linear-gradient(135deg,#e8398f,#7b2d8e)">נ״צ</div>
+                <div class="min-w-0">
+                  <div class="font-extrabold text-[13.5px] text-ink-900">נציבות קבילות הציבור</div>
+                  <div class="text-[12px] text-ink-600 font-semibold">פניות מטופלים ובני משפחה</div>
+                  <div class="mt-2 flex flex-wrap gap-1.5 text-[11px] font-bold">
+                    <span class="bg-rambam-50 text-rambam-700 px-2 py-0.5 rounded-lg">שלוחה 2960</span>
+                  </div>
+                  <p class="text-[11.5px] text-ink-600 mt-2 leading-relaxed">טיפול בתלונות, תיאום מענה מחלקתי ובקרת סגירת מעגל מול הפונה.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="role-card bg-white/80 rounded-3xl p-4 border border-ink-100 card-hover hover:border-rambam-200 hover:shadow-soft" data-cat="admin" data-searchable data-tags="ממונה הטרדה מינית סביבת עבודה מוגנת תלונה">
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-2xl grid place-items-center text-white font-black text-[12px] shrink-0" style="background:linear-gradient(135deg,#96104f,#4c1a5c)">ה״מ</div>
+                <div class="min-w-0">
+                  <div class="font-extrabold text-[13.5px] text-ink-900">הממונה על מניעת הטרדה מינית</div>
+                  <div class="text-[12px] text-ink-600 font-semibold">פנייה ישירה וחסויה</div>
+                  <div class="mt-2 flex flex-wrap gap-1.5 text-[11px] font-bold">
+                    <span class="bg-rambam-50 text-rambam-700 px-2 py-0.5 rounded-lg">שלוחה 2288</span>
+                    <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-lg">סודיות מלאה</span>
+                  </div>
+                  <p class="text-[11.5px] text-ink-600 mt-2 leading-relaxed">קבלת תלונות, ליווי המתלונן/ת וניהול הבירור בהתאם לחוק ולתקנון הארגוני.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="role-card bg-white/80 rounded-3xl p-4 border border-ink-100 card-hover hover:border-rambam-200 hover:shadow-soft" data-cat="safety" data-searchable data-tags="ניהול סיכונים אירוע חריג תחקיר בטיחות המטופל">
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-2xl grid place-items-center text-white font-black text-[12px] shrink-0" style="background:linear-gradient(135deg,#d91b76,#4c1a5c)">נ״ס</div>
+                <div class="min-w-0">
+                  <div class="font-extrabold text-[13.5px] text-ink-900">יחידת ניהול סיכונים ובטיחות המטופל</div>
+                  <div class="text-[12px] text-ink-600 font-semibold">דיווח אירוע חריג ותחקירים</div>
+                  <div class="mt-2 flex flex-wrap gap-1.5 text-[11px] font-bold">
+                    <span class="bg-rambam-50 text-rambam-700 px-2 py-0.5 rounded-lg">שלוחה 2777</span>
+                    <span class="bg-amber-50 text-amber-700 px-2 py-0.5 rounded-lg">טופס דיווח מקוון</span>
+                  </div>
+                  <p class="text-[11.5px] text-ink-600 mt-2 leading-relaxed">דיווח על אירוע חריג או כמעט-אירוע (Near Miss) הוא חובה ואינו הליך משמעתי — מטרתו למידה ארגונית.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="role-card bg-white/80 rounded-3xl p-4 border border-ink-100 card-hover hover:border-rambam-200 hover:shadow-soft" data-cat="hanhala" data-searchable data-tags="ועדת אתיקה הלסינקי מחקר קליני מזכירות">
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-2xl grid place-items-center text-white font-black text-[12px] shrink-0" style="background:linear-gradient(135deg,#b81260,#7b2d8e)">ה״ל</div>
+                <div class="min-w-0">
+                  <div class="font-extrabold text-[13.5px] text-ink-900">מזכירות ועדת הלסינקי המוסדית</div>
+                  <div class="text-[12px] text-ink-600 font-semibold">אגף מחקר ופיתוח</div>
+                  <div class="mt-2 flex flex-wrap gap-1.5 text-[11px] font-bold">
+                    <span class="bg-rambam-50 text-rambam-700 px-2 py-0.5 rounded-lg">שלוחה 3900</span>
+                    <span class="bg-ink-100 text-ink-600 px-2 py-0.5 rounded-lg">helsinki@rambam</span>
+                  </div>
+                  <p class="text-[11.5px] text-ink-600 mt-2 leading-relaxed">קליטת פרוטוקולים דרך מערכת ״מטרות״, זימון ישיבות, מכתבי אישור וחידושים שנתיים.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <p class="px-5 sm:px-6 pb-4 text-[11px] text-ink-400 font-semibold">התוכן מוצג לצורכי הדגמה של הפורטל; מספרי השלוחות והשמות מתעדכנים מול ספר הטלפונים הארגוני.</p>
+        </div>
+
+        <!-- מוקדי סמכות + חירום -->
+        <div class="space-y-5">
+          <div class="glass rounded-4xl p-5 sm:p-6 shadow-soft" data-searchable data-tags="מוקדי סמכות אחריות ועדות אישורים מי מאשר">
+            <h3 class="font-display font-black text-[17px] tracking-tight mb-1">מוקדי סמכות ואחריות</h3>
+            <p class="text-[12.5px] text-ink-600 font-medium mb-4">לפני שמתחילים תהליך — מי הגורם שחייב לאשר אותו.</p>
+
+            <div class="space-y-2.5">
+              <details class="bg-white/80 rounded-2xl border border-ink-100 overflow-hidden" data-searchable data-tags="ועדת טכנולוגיות רפואיות ויסמן ציוד חדש הכנסת טכנולוגיה תרומה השאלה">
+                <summary class="px-4 py-3 flex items-center justify-between gap-3">
+                  <span class="font-extrabold text-[13.5px]">ועדת טכנולוגיות רפואיות</span>
+                  <svg class="chev shrink-0 text-ink-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="px-4 pb-4 text-[12.5px] text-ink-600 leading-relaxed space-y-2 border-t border-ink-100 pt-3">
+                  <p><span class="font-bold text-ink-900">יו״ר:</span> ד״ר ויסמן · <span class="font-bold text-ink-900">מזכירות:</span> שלוחה 2455</p>
+                  <p><span class="font-bold text-ink-900">מה טעון אישור:</span> כל ציוד רפואי, מכשיר, ערכה או טכנולוגיה חדשה — כולל פריטים המתקבלים בתרומה, בהשאלה מחברה או לצורך ניסוי קליני.</p>
+                  <p><span class="font-bold text-ink-900">מה מגישים:</span> טופס בקשה, מפרט טכני, אישור AMAR / CE / FDA, הערכת עלות-תועלת, חוות דעת מנהל המחלקה והתייחסות תשתיתית (חשמל, גזים, תקשורת).</p>
+                  <p><span class="font-bold text-ink-900">לוח זמנים:</span> הוועדה מתכנסת אחת לרבעון; חלון ההגשה נסגר 14 יום לפני מועד הישיבה.</p>
+                  <button data-goto="systems" class="mt-1 text-rambam-700 font-bold text-[12.5px] underline underline-offset-4">מעבר לטופס ההגשה המקוון ←</button>
+                </div>
+              </details>
+
+              <details class="bg-white/80 rounded-2xl border border-ink-100 overflow-hidden" data-searchable data-tags="ועדת הלסינקי אתיקה מחקר בבני אדם אישור">
+                <summary class="px-4 py-3 flex items-center justify-between gap-3">
+                  <span class="font-extrabold text-[13.5px]">ועדת הלסינקי המוסדית</span>
+                  <svg class="chev shrink-0 text-ink-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="px-4 pb-4 text-[12.5px] text-ink-600 leading-relaxed space-y-2 border-t border-ink-100 pt-3">
+                  <p>סמכות בלעדית לאשר מחקר רפואי בבני אדם, לרבות מחקר רטרוספקטיבי בנתונים ובדגימות. אין להתחיל איסוף נתונים לפני קבלת מכתב אישור חתום.</p>
+                  <p><span class="font-bold text-ink-900">ערוץ הגשה:</span> מערכת ״מטרות״ בלבד. <span class="font-bold text-ink-900">חידוש:</span> אחת לשנה, 60 יום לפני פקיעת האישור.</p>
+                </div>
+              </details>
+
+              <details class="bg-white/80 rounded-2xl border border-ink-100 overflow-hidden" data-searchable data-tags="ועדת רכש מכרזים התקשרות ספק חוזה">
+                <summary class="px-4 py-3 flex items-center justify-between gap-3">
+                  <span class="font-extrabold text-[13.5px]">ועדת רכש והתקשרויות</span>
+                  <svg class="chev shrink-0 text-ink-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="px-4 pb-4 text-[12.5px] text-ink-600 leading-relaxed space-y-2 border-t border-ink-100 pt-3">
+                  <p>מאשרת התקשרויות מעל סף המכרז, בחירת ספקים והארכות חוזה. דרישת רכש שאינה מגובה בתקציב מחלקתי תוחזר לפותח הדרישה.</p>
+                  <p><span class="font-bold text-ink-900">שימו לב:</span> רכש של ציוד רפואי מחייב אישור ועדת טכנולוגיות <em>לפני</em> פתיחת דרישת הרכש.</p>
+                </div>
+              </details>
+
+              <details class="bg-white/80 rounded-2xl border border-ink-100 overflow-hidden" data-searchable data-tags="ועדת בטיחות מוסדית גיהות סקר סיכונים">
+                <summary class="px-4 py-3 flex items-center justify-between gap-3">
+                  <span class="font-extrabold text-[13.5px]">ועדת בטיחות מוסדית</span>
+                  <svg class="chev shrink-0 text-ink-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="px-4 pb-4 text-[12.5px] text-ink-600 leading-relaxed space-y-2 border-t border-ink-100 pt-3">
+                  <p>מתכנסת אחת לחודשיים בהשתתפות ממונה הבטיחות, נציגי עובדים, הנדסה ומניעת זיהומים. דנה בתחקירי אירועים, סקרי סיכונים ותוכנית ההדרכה השנתית.</p>
+                </div>
+              </details>
+
+              <details class="bg-white/80 rounded-2xl border border-ink-100 overflow-hidden" data-searchable data-tags="ועדת תרופות פורמולרי אנטיביוטיקה חריג">
+                <summary class="px-4 py-3 flex items-center justify-between gap-3">
+                  <span class="font-extrabold text-[13.5px]">ועדת תרופות (פורמולרי)</span>
+                  <svg class="chev shrink-0 text-ink-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="px-4 pb-4 text-[12.5px] text-ink-600 leading-relaxed space-y-2 border-t border-ink-100 pt-3">
+                  <p>הוספת תכשיר לפורמולרי המוסדי, אישור שימוש חריג (Off-label) ובקרת אנטיביוטיקה מוגבלת בשיתוף היחידה למחלות זיהומיות.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="rounded-4xl p-5 sm:p-6 shadow-lift text-white" style="background:linear-gradient(135deg,#6d0a39,#4c1a5c)" data-searchable data-tags="חירום מוקד קוד כחול אבטחה מחשוב טלפונים דחופים אירוע רב נפגעים">
+            <h3 class="font-display font-black text-[17px] tracking-tight mb-1">מוקדי חירום פנימיים</h3>
+            <p class="text-[12.5px] text-white/70 font-medium mb-4">חיוג מכל טלפון פנימי בקריה, 24/7.</p>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between gap-3 bg-white/10 rounded-2xl px-4 py-3 border border-white/15">
+                <div><div class="font-extrabold text-[13.5px]">קוד כחול — צוות החייאה</div><div class="text-[11.5px] text-white/70">ציון מיקום מדויק: בניין, קומה, מחלקה</div></div>
+                <div class="font-display font-black text-[22px]">2222</div>
+              </div>
+              <div class="flex items-center justify-between gap-3 bg-white/10 rounded-2xl px-4 py-3 border border-white/15">
+                <div><div class="font-extrabold text-[13.5px]">מוקד ביטחון ואבטחה</div><div class="text-[11.5px] text-white/70">אירוע אלימות, חפץ חשוד, סיוע בפינוי</div></div>
+                <div class="font-display font-black text-[22px]">3333</div>
+              </div>
+              <div class="flex items-center justify-between gap-3 bg-white/10 rounded-2xl px-4 py-3 border border-white/15">
+                <div><div class="font-extrabold text-[13.5px]">מוקד מחשוב ותמיכה</div><div class="text-[11.5px] text-white/70">תקלת קמיליון, רשת, סיסמאות</div></div>
+                <div class="font-display font-black text-[22px]">4444</div>
+              </div>
+              <div class="flex items-center justify-between gap-3 bg-white/10 rounded-2xl px-4 py-3 border border-white/15">
+                <div><div class="font-extrabold text-[13.5px]">מוקד תחזוקה והנדסה</div><div class="text-[11.5px] text-white/70">חשמל, מים, מיזוג, גזים רפואיים</div></div>
+                <div class="font-display font-black text-[22px]">5555</div>
+              </div>
+              <div class="flex items-center justify-between gap-3 bg-white/10 rounded-2xl px-4 py-3 border border-white/15">
+                <div><div class="font-extrabold text-[13.5px]">חמ״ל אירוע רב נפגעים</div><div class="text-[11.5px] text-white/70">מופעל בהכרזת מל״ח / אר״ן בלבד</div></div>
+                <div class="font-display font-black text-[22px]">1911</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL ב: מערכות ושירותים ==================== -->
+    <div id="panel-systems" role="tabpanel" aria-labelledby="tab-systems" class="tab-panel hidden space-y-5">
+
+      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+
+        <!-- קש"ב -->
+        <article class="glass rounded-4xl shadow-soft overflow-hidden card-hover hover:shadow-lift" data-searchable data-tags="קשב הסעות צוות קליני מונית נסיעה תורנות כוננות הזמנה">
+          <div class="h-1.5 w-full" style="background:linear-gradient(90deg,#7b2d8e,#d91b76)"></div>
+          <div class="p-5 sm:p-6">
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="w-12 h-12 rounded-2xl grid place-items-center text-white shadow-soft shrink-0" style="background:linear-gradient(135deg,#7b2d8e,#4c1a5c)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 15.5h14.8M6 15.5V9.2l1.7-3.4h8.6L18 9.2v6.3"/><circle cx="8" cy="18" r="1.5"/><circle cx="16" cy="18" r="1.5"/></svg>
+              </div>
+              <span class="text-[10.5px] font-black text-emerald-700 bg-emerald-50 border border-emerald-100 px-2.5 py-1 rounded-full">זמין · 99.8%</span>
+            </div>
+            <h3 class="font-display font-black text-[17px] tracking-tight">מערכת קש״ב — הזמנת הסעות לצוות</h3>
+            <p class="text-[12.5px] text-ink-600 leading-relaxed mt-1.5">הזמנת נסיעה לצוות קליני בכניסה וביציאה ממשמרת, תורנות או קריאת כוננות, כולל נסיעות בשעות שאין בהן תחבורה ציבורית.</p>
+            <ul class="mt-3.5 space-y-1.5 text-[12.5px] text-ink-600">
+              <li class="flex gap-2"><span class="text-rambam-600 font-black">·</span> הזמנה עד 60 דקות לפני מועד הנסיעה; קריאת חירום — מיידית באישור אחראי משמרת.</li>
+              <li class="flex gap-2"><span class="text-rambam-600 font-black">·</span> שיוך אוטומטי לתקציב המחלקה ולסוג הזכאות (תורנות / כוננות / משמרת לילה).</li>
+              <li class="flex gap-2"><span class="text-rambam-600 font-black">·</span> מעקב בזמן אמת אחר הרכב המשובץ ואישור ביצוע דיגיטלי בסיום הנסיעה.</li>
+              <li class="flex gap-2"><span class="text-rambam-600 font-black">·</span> ביטול ללא חיוב עד 20 דקות לפני; ביטול מאוחר נרשם לחובת המחלקה.</li>
+            </ul>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <button class="rounded-xl bg-rambam-600 text-white px-4 py-2.5 text-[12.5px] font-extrabold hover:bg-rambam-700 transition shadow-soft">הזמנת נסיעה</button>
+              <button class="rounded-xl bg-white border border-ink-200 px-4 py-2.5 text-[12.5px] font-bold hover:border-rambam-300 transition">הנסיעות שלי</button>
+              <button class="rounded-xl bg-white border border-ink-200 px-4 py-2.5 text-[12.5px] font-bold hover:border-rambam-300 transition">נוהל זכאות</button>
+            </div>
+            <div class="mt-3 text-[11.5px] font-semibold text-ink-400">תמיכה: מוקד תחבורה, שלוחה 2480 · א׳–ה׳ 06:00–22:00</div>
+          </div>
+        </article>
+
+        <!-- קמיליון -->
+        <article class="glass rounded-4xl shadow-soft overflow-hidden card-hover hover:shadow-lift" data-searchable data-tags="קמיליון תיק רפואי ממוחשב רשומה סיכום מחלה מרשם הזמנת בדיקה">
+          <div class="h-1.5 w-full" style="background:linear-gradient(90deg,#d91b76,#b81260)"></div>
+          <div class="p-5 sm:p-6">
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="w-12 h-12 rounded-2xl grid place-items-center text-white shadow-soft shrink-0" style="background:linear-gradient(135deg,#d91b76,#b81260)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3.4" width="14" height="17.2" rx="2.2"/><path d="M12 8.6v6.2M8.9 11.7h6.2"/></svg>
+              </div>
+              <span class="text-[10.5px] font-black text-amber-700 bg-amber-50 border border-amber-100 px-2.5 py-1 rounded-full">תחזוקה מתוכננת</span>
+            </div>
+            <h3 class="font-display font-black text-[17px] tracking-tight">קמיליון — התיק הרפואי הממוחשב</h3>
+            <p class="text-[12.5px] text-ink-600 leading-relaxed mt-1.5">הרשומה הקלינית המרכזית: אשפוז, מרפאות חוץ, הוראות רפואיות, מרשמים, הזמנת בדיקות מעבדה והדמיה, וסיכומי מחלה.</p>
+            <ul class="mt-3.5 space-y-1.5 text-[12.5px] text-ink-600">
+              <li class="flex gap-2"><span class="text-rambam-600 font-black">·</span> הרשאות נקבעות לפי תפקיד ומחלקה; צפייה ברשומה שאינה של מטופל שלך מתועדת בלוג ונבדקת.</li>
+              <li class="flex gap-2"><span class="text-rambam-600 font-black">·</span> חלון תחזוקה קבוע: ליל שבת 23:30–02:00 — יש לעבוד לפי נוהל Downtime ולתעד בטפסי גיבוי.</li>
+              <li class="flex gap-2"><span class="text-rambam-600 font-black">·</span> שליפת נתונים למחקר מחייבת אישור ועדת הלסינקי ופנייה ליחידת המידע הרפואי.</li>
+              <li class="flex gap-2"><span class="text-rambam-600 font-black">·</span> איפוס סיסמה עצמאי בפורטל; נעילת משתמש — מוקד מחשוב 4444.</li>
+            </ul>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <button class="rounded-xl bg-rambam-600 text-white px-4 py-2.5 text-[12.5px] font-extrabold hover:bg-rambam-700 transition shadow-soft">כניסה לקמיליון</button>
+              <button class="rounded-xl bg-white border border-ink-200 px-4 py-2.5 text-[12.5px] font-bold hover:border-rambam-300 transition">נוהל השבתה</button>
+              <button class="rounded-xl bg-white border border-ink-200 px-4 py-2.5 text-[12.5px] font-bold hover:border-rambam-300 transition">בקשת הרשאה</button>
+            </div>
+            <div class="mt-3 text-[11.5px] font-semibold text-ink-400">תמיכה: מוקד מחשוב 4444 · 24/7</div>
+          </div>
+        </article>
+
+        <!-- רכש ולוגיסטיקה -->
+        <article class="glass rounded-4xl shadow-soft overflow-hidden card-hover hover:shadow-lift" data-searchable data-tags="רכש לוגיסטיקה דרישת רכש מלאי מחסן ספק חשבונית קבלת טובין">
+          <div class="h-1.5 w-full" style="background:linear-gradient(90deg,#96104f,#6d0a39)"></div>
+          <div class="p-5 sm:p-6">
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="w-12 h-12 rounded-2xl grid place-items-center text-white shadow-soft shrink-0" style="background:linear-gradient(135deg,#96104f,#6d0a39)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.4 12 3.6l8 3.8v9.2L12 20.4 4 16.6V7.4Z"/><path d="m4 7.4 8 3.9 8-3.9M12 11.3v9.1"/></svg>
+              </div>
+              <span class="text-[10.5px] font-black text-emerald-700 bg-emerald-50 border border-emerald-100 px-2.5 py-1 rounded-full">זמין</span>
+            </div>
+            <h3 class="font-display font-black text-[17px] tracking-tight">מערכת רכש ולוגיסטיקה</h3>
+            <p class="text-[12.5px] text-ink-600 leading-relaxed mt-1.5">פתיחת דרישת רכש, מעקב אחר סטטוס הזמנה, משיכת מלאי מהמחסן המרכזי ואישור קבלת טובין.</p>
+            <ul class="mt-3.5 space-y-1.5 text-[12.5px] text-ink-600">
+              <li class="flex gap-2"><span class="text-rambam-600 font-black">·</span> מסלול אישורים: פותח הדרישה ← מנהל המחלקה ← בקרת תקציב ← רכש.</li>
+              <li class="flex gap-2"><span class="text-rambam-600 font-black">·</span> ציוד רפואי חדש מחייב אישור ועדת טכנולוגיות מצורף לדרישה.</li>
+              <li class="flex gap-2"><span class="text-rambam-600 font-black">·</span> משיכת מלאי שוטף מהמחסן: הזמנה עד יום ג׳ 12:00 לאספקה בשבוע העוקב.</li>
+              <li class="flex gap-2"><span class="text-rambam-600 font-black">·</span> אין לקלוט טובין ללא אישור קבלה במערכת — חשבונית ללא קליטה לא תשולם.</li>
+            </ul>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <button class="rounded-xl bg-rambam-600 text-white px-4 py-2.5 text-[12.5px] font-extrabold hover:bg-rambam-700 transition shadow-soft">פתיחת דרישת רכש</button>
+              <button class="rounded-xl bg-white border border-ink-200 px-4 py-2.5 text-[12.5px] font-bold hover:border-rambam-300 transition">קטלוג פריטים</button>
+              <button class="rounded-xl bg-white border border-ink-200 px-4 py-2.5 text-[12.5px] font-bold hover:border-rambam-300 transition">סטטוס הזמנות</button>
+            </div>
+            <div class="mt-3 text-[11.5px] font-semibold text-ink-400">תמיכה: אגף רכש, שלוחה 2530</div>
+          </div>
+        </article>
+
+        <!-- ועדת טכנולוגיות - הגשה -->
+        <article class="glass rounded-4xl shadow-soft overflow-hidden card-hover hover:shadow-lift" data-searchable data-tags="הגשת בקשה ועדת טכנולוגיות רפואיות ויסמן טופס ציוד חדש">
+          <div class="h-1.5 w-full" style="background:linear-gradient(90deg,#b81260,#7b2d8e)"></div>
+          <div class="p-5 sm:p-6">
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="w-12 h-12 rounded-2xl grid place-items-center text-white shadow-soft shrink-0" style="background:linear-gradient(135deg,#b81260,#7b2d8e)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.4 3.6h6.4l4.8 4.8v11.2a1.6 1.6 0 0 1-1.6 1.6H7.4a1.6 1.6 0 0 1-1.6-1.6V5.2a1.6 1.6 0 0 1 1.6-1.6Z"/><path d="M13.6 3.6v5h4.8M9.2 14.2h5.6M9.2 17.4h3.6"/></svg>
+              </div>
+              <span class="text-[10.5px] font-black text-rambam-700 bg-rambam-50 border border-rambam-100 px-2.5 py-1 rounded-full">חלון הגשה פתוח</span>
+            </div>
+            <h3 class="font-display font-black text-[17px] tracking-tight">הגשת בקשה לוועדת טכנולוגיות רפואיות</h3>
+            <p class="text-[12.5px] text-ink-600 leading-relaxed mt-1.5">טופס מקוון להכנסת ציוד, מכשור או טכנולוגיה רפואית חדשה לשימוש בקריה — בראשות ד״ר ויסמן.</p>
+            <div class="mt-3.5 space-y-2">
+              <div class="flex items-center gap-3 bg-white/80 rounded-2xl px-3.5 py-2.5 border border-ink-100">
+                <span class="w-6 h-6 rounded-lg bg-rambam-600 text-white grid place-items-center text-[11px] font-black shrink-0">1</span>
+                <span class="text-[12.5px] font-semibold">מילוי טופס בקשה + הצדקה קלינית</span>
+              </div>
+              <div class="flex items-center gap-3 bg-white/80 rounded-2xl px-3.5 py-2.5 border border-ink-100">
+                <span class="w-6 h-6 rounded-lg bg-rambam-600 text-white grid place-items-center text-[11px] font-black shrink-0">2</span>
+                <span class="text-[12.5px] font-semibold">צירוף מפרט טכני ואישורי תקן (AMAR / CE / FDA)</span>
+              </div>
+              <div class="flex items-center gap-3 bg-white/80 rounded-2xl px-3.5 py-2.5 border border-ink-100">
+                <span class="w-6 h-6 rounded-lg bg-rambam-600 text-white grid place-items-center text-[11px] font-black shrink-0">3</span>
+                <span class="text-[12.5px] font-semibold">חוות דעת הנדסה רפואית ותשתיות</span>
+              </div>
+              <div class="flex items-center gap-3 bg-white/80 rounded-2xl px-3.5 py-2.5 border border-ink-100">
+                <span class="w-6 h-6 rounded-lg bg-rambam-600 text-white grid place-items-center text-[11px] font-black shrink-0">4</span>
+                <span class="text-[12.5px] font-semibold">דיון בוועדה ומכתב החלטה תוך 10 ימי עבודה</span>
+              </div>
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <button class="rounded-xl bg-rambam-600 text-white px-4 py-2.5 text-[12.5px] font-extrabold hover:bg-rambam-700 transition shadow-soft">פתיחת בקשה חדשה</button>
+              <button class="rounded-xl bg-white border border-ink-200 px-4 py-2.5 text-[12.5px] font-bold hover:border-rambam-300 transition">מעקב בקשות</button>
+            </div>
+            <div class="mt-3 text-[11.5px] font-semibold text-ink-400">מזכירות הוועדה: שלוחה 2455</div>
+          </div>
+        </article>
+
+        <!-- חילן / נוכחות -->
+        <article class="glass rounded-4xl shadow-soft overflow-hidden card-hover hover:shadow-lift" data-searchable data-tags="חילן נוכחות דיווח שעות החתמה כרטיס עובד תלוש">
+          <div class="h-1.5 w-full" style="background:linear-gradient(90deg,#e8398f,#d91b76)"></div>
+          <div class="p-5 sm:p-6">
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="w-12 h-12 rounded-2xl grid place-items-center text-white shadow-soft shrink-0" style="background:linear-gradient(135deg,#e8398f,#d91b76)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M12 7.2V12l3.2 2"/></svg>
+              </div>
+              <span class="text-[10.5px] font-black text-emerald-700 bg-emerald-50 border border-emerald-100 px-2.5 py-1 rounded-full">זמין</span>
+            </div>
+            <h3 class="font-display font-black text-[17px] tracking-tight">מערכת נוכחות ודיווח שעות</h3>
+            <p class="text-[12.5px] text-ink-600 leading-relaxed mt-1.5">החתמת כניסה ויציאה, השלמת דיווחים חסרים, בקשות חופשה ואישור מנהל — ממחשב או מהנייד.</p>
+            <ul class="mt-3.5 space-y-1.5 text-[12.5px] text-ink-600">
+              <li class="flex gap-2"><span class="text-rambam-600 font-black">·</span> תיקון דיווח אפשרי עד ה-5 בחודש העוקב; לאחר מכן נדרשת פנייה למדור שכר.</li>
+              <li class="flex gap-2"><span class="text-rambam-600 font-black">·</span> תורנות וכוננות מדווחות בקוד ייעודי ומאושרות על ידי מנהל היחידה.</li>
+              <li class="flex gap-2"><span class="text-rambam-600 font-black">·</span> יתרות חופשה, מחלה והשתלמות מוצגות באזור האישי בזמן אמת.</li>
+            </ul>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <button data-goto="rights" class="rounded-xl bg-rambam-600 text-white px-4 py-2.5 text-[12.5px] font-extrabold hover:bg-rambam-700 transition shadow-soft">דיווח נוכחות</button>
+              <button data-goto="rights" class="rounded-xl bg-white border border-ink-200 px-4 py-2.5 text-[12.5px] font-bold hover:border-rambam-300 transition">בקשת חופשה</button>
+            </div>
+            <div class="mt-3 text-[11.5px] font-semibold text-ink-400">תמיכה: מדור נוכחות, שלוחה 2210</div>
+          </div>
+        </article>
+
+        <!-- מטרות -->
+        <article class="glass rounded-4xl shadow-soft overflow-hidden card-hover hover:shadow-lift" data-searchable data-tags="מטרות מחקר הלסינקי פרוטוקול תקציב מחקר חוקר">
+          <div class="h-1.5 w-full" style="background:linear-gradient(90deg,#7b2d8e,#371343)"></div>
+          <div class="p-5 sm:p-6">
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="w-12 h-12 rounded-2xl grid place-items-center text-white shadow-soft shrink-0" style="background:linear-gradient(135deg,#7b2d8e,#371343)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.4"/><circle cx="12" cy="12" r="4.4"/><circle cx="12" cy="12" r=".9" fill="currentColor"/></svg>
+              </div>
+              <span class="text-[10.5px] font-black text-emerald-700 bg-emerald-50 border border-emerald-100 px-2.5 py-1 rounded-full">זמין</span>
+            </div>
+            <h3 class="font-display font-black text-[17px] tracking-tight">מערכת ״מטרות״ — ניהול המחקר המוסדי</h3>
+            <p class="text-[12.5px] text-ink-600 leading-relaxed mt-1.5">הגשת פרוטוקולים, מעקב אחר אישורי ועדת הלסינקי, ניהול תקציבי מחקר ודיווחי התקדמות — הכל בערוץ אחד.</p>
+            <ul class="mt-3.5 space-y-1.5 text-[12.5px] text-ink-600">
+              <li class="flex gap-2"><span class="text-rambam-600 font-black">·</span> סטטוס חי לכל מחקר: הוגש · בבדיקה מנהלית · בדיון · אושר · דורש השלמות.</li>
+              <li class="flex gap-2"><span class="text-rambam-600 font-black">·</span> תזכורת אוטומטית 60 יום לפני פקיעת אישור, לצורך הגשת חידוש שנתי.</li>
+              <li class="flex gap-2"><span class="text-rambam-600 font-black">·</span> ניהול הסכמים מדעת (טפסי הסכמה), Amendments ודיווחי אירועים חריגים.</li>
+            </ul>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <button data-goto="research" class="rounded-xl bg-rambam-600 text-white px-4 py-2.5 text-[12.5px] font-extrabold hover:bg-rambam-700 transition shadow-soft">כניסה למטרות</button>
+              <button data-goto="research" class="rounded-xl bg-white border border-ink-200 px-4 py-2.5 text-[12.5px] font-bold hover:border-rambam-300 transition">המחקרים שלי</button>
+            </div>
+            <div class="mt-3 text-[11.5px] font-semibold text-ink-400">תמיכה: אגף מחקר ופיתוח, שלוחה 3900</div>
+          </div>
+        </article>
+      </div>
+
+      <!-- מצב מערכות + פתיחת קריאה -->
+      <div class="grid lg:grid-cols-[1.3fr_1fr] gap-5">
+        <div class="glass rounded-4xl p-5 sm:p-6 shadow-soft" data-searchable data-tags="מצב מערכות זמינות תקלות סטטוס SLA">
+          <div class="flex items-center justify-between gap-3 mb-4">
+            <h3 class="font-display font-black text-[17px] tracking-tight">מצב מערכות בזמן אמת</h3>
+            <span class="text-[11.5px] font-bold text-ink-400">רענון אוטומטי כל 5 דקות</span>
+          </div>
+          <div class="space-y-2">
+            <div class="flex items-center gap-3 bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
+              <span class="font-bold text-[13px] flex-1">קמיליון — תיק רפואי</span>
+              <span class="text-[11.5px] font-semibold text-ink-400">תחזוקה מתוכננת בליל שבת</span>
+            </div>
+            <div class="flex items-center gap-3 bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
+              <span class="font-bold text-[13px] flex-1">קש״ב — הסעות</span>
+              <span class="text-[11.5px] font-semibold text-ink-400">תקין</span>
+            </div>
+            <div class="flex items-center gap-3 bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0"></span>
+              <span class="font-bold text-[13px] flex-1">מערכת רכש — מודול דוחות</span>
+              <span class="text-[11.5px] font-semibold text-amber-700">איטיות בהפקת דוחות</span>
+            </div>
+            <div class="flex items-center gap-3 bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
+              <span class="font-bold text-[13px] flex-1">מטרות — מחקר</span>
+              <span class="text-[11.5px] font-semibold text-ink-400">תקין</span>
+            </div>
+            <div class="flex items-center gap-3 bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
+              <span class="font-bold text-[13px] flex-1">נוכחות ושכר</span>
+              <span class="text-[11.5px] font-semibold text-ink-400">תקין</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-4xl p-5 sm:p-6 shadow-lift text-white" style="background:linear-gradient(135deg,#b81260,#4c1a5c)" data-searchable data-tags="פתיחת קריאה תמיכה מוקד מחשוב תקלה SLA">
+          <h3 class="font-display font-black text-[17px] tracking-tight mb-1">פתיחת קריאת שירות</h3>
+          <p class="text-[12.5px] text-white/75 font-medium mb-4">בחרו את סוג התקלה — הקריאה תנותב אוטומטית לגורם המטפל.</p>
+          <div class="grid grid-cols-2 gap-2.5">
+            <button class="bg-white/12 hover:bg-white/22 border border-white/20 rounded-2xl px-3 py-3 text-[12.5px] font-bold text-right transition">תקלת מחשוב / מערכת</button>
+            <button class="bg-white/12 hover:bg-white/22 border border-white/20 rounded-2xl px-3 py-3 text-[12.5px] font-bold text-right transition">תחזוקה ותשתיות</button>
+            <button class="bg-white/12 hover:bg-white/22 border border-white/20 rounded-2xl px-3 py-3 text-[12.5px] font-bold text-right transition">ציוד רפואי — הנדסה</button>
+            <button class="bg-white/12 hover:bg-white/22 border border-white/20 rounded-2xl px-3 py-3 text-[12.5px] font-bold text-right transition">ניקיון ומשק</button>
+          </div>
+          <div class="mt-4 bg-white/10 border border-white/15 rounded-2xl p-4">
+            <div class="text-[12px] font-bold text-white/80 mb-1.5">יעדי מענה (SLA)</div>
+            <div class="text-[12px] text-white/70 leading-relaxed">תקלה משביתה בסביבה קלינית — 30 דקות · תקלה משביתה במנהלה — 4 שעות · בקשה שאינה דחופה — 3 ימי עבודה.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL ג: זכויות, שכר והסכמים ==================== -->
+    <div id="panel-rights" role="tabpanel" aria-labelledby="tab-rights" class="tab-panel hidden space-y-5">
+
+      <div class="grid lg:grid-cols-3 gap-5">
+        <div class="lg:col-span-2 space-y-5">
+
+          <div class="glass rounded-4xl p-5 sm:p-6 shadow-soft" data-searchable data-tags="שכר תלוש מועד תשלום רכיבי שכר תוספות ותק">
+            <h3 class="font-display font-black text-[17px] tracking-tight mb-1">נהלי שכר — מה בדיוק מרכיב את התלוש</h3>
+            <p class="text-[12.5px] text-ink-600 font-medium mb-4">שקיפות מלאה ברכיבי השכר, מועדי התשלום ואופן הטיפול בהפרשים.</p>
+
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div class="bg-white/80 rounded-3xl p-4 border border-ink-100">
+                <div class="text-[11.5px] font-black text-rambam-700 mb-1.5">מועד תשלום</div>
+                <p class="text-[12.5px] text-ink-600 leading-relaxed">השכר משולם ב-1 בכל חודש עבור החודש שחלף. חל המועד בשבת או בחג — התשלום מוקדם ליום העסקים שלפניו.</p>
+              </div>
+              <div class="bg-white/80 rounded-3xl p-4 border border-ink-100">
+                <div class="text-[11.5px] font-black text-rambam-700 mb-1.5">רכיבי שכר קבועים</div>
+                <p class="text-[12.5px] text-ink-600 leading-relaxed">שכר יסוד לפי דירוג ודרגה, תוספת ותק, תוספת מקצועית, תוספת שקלית והחזר הוצאות נסיעה.</p>
+              </div>
+              <div class="bg-white/80 rounded-3xl p-4 border border-ink-100">
+                <div class="text-[11.5px] font-black text-rambam-700 mb-1.5">רכיבים משתנים</div>
+                <p class="text-[12.5px] text-ink-600 leading-relaxed">תורנויות, כוננויות, שעות נוספות, תוספת משמרות ותוספת עבודה בשבתות ובחגים — לפי דיווח מאושר.</p>
+              </div>
+              <div class="bg-white/80 rounded-3xl p-4 border border-ink-100">
+                <div class="text-[11.5px] font-black text-rambam-700 mb-1.5">הפרשים ותיקונים</div>
+                <p class="text-[12.5px] text-ink-600 leading-relaxed">דיווח שאושר לאחר סגירת השכר משולם כהפרש בתלוש העוקב, בשורה נפרדת המסומנת בחודש המקורי.</p>
+              </div>
+            </div>
+
+            <div class="mt-4 grid sm:grid-cols-3 gap-2.5">
+              <button class="rounded-2xl bg-rambam-600 text-white px-4 py-3 text-[12.5px] font-extrabold hover:bg-rambam-700 transition shadow-soft">צפייה בתלוש שכר</button>
+              <button class="rounded-2xl bg-white border border-ink-200 px-4 py-3 text-[12.5px] font-bold hover:border-rambam-300 transition">טופס 106 שנתי</button>
+              <button class="rounded-2xl bg-white border border-ink-200 px-4 py-3 text-[12.5px] font-bold hover:border-rambam-300 transition">אישור העסקה / שכר</button>
+            </div>
+          </div>
+
+          <div class="glass rounded-4xl p-5 sm:p-6 shadow-soft" data-searchable data-tags="נוכחות שעות נוספות תורנות כוננות משמרות דיווח נהלים">
+            <h3 class="font-display font-black text-[17px] tracking-tight mb-1">נוכחות, שעות נוספות ותורנויות</h3>
+            <p class="text-[12.5px] text-ink-600 font-medium mb-4">הכללים שקובעים מה נחשב שעה נוספת, מה נחשב כוננות, ומתי חייבים אישור מראש.</p>
+            <div class="space-y-2.5">
+              <details class="bg-white/80 rounded-2xl border border-ink-100" data-searchable data-tags="שעות נוספות אישור מראש תשלום 125% 150%">
+                <summary class="px-4 py-3 flex items-center justify-between gap-3"><span class="font-extrabold text-[13.5px]">שעות נוספות</span><svg class="chev text-ink-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="px-4 pb-4 pt-3 border-t border-ink-100 text-[12.5px] text-ink-600 leading-relaxed space-y-1.5">
+                  <p>שעה נוספת מוכרת רק כאשר אושרה מראש על ידי מנהל היחידה ודווחה במערכת הנוכחות באותו יום.</p>
+                  <p>שתי השעות הראשונות מעבר ליום העבודה — 125%; משעה שלישית ואילך — 150%. עבודה במנוחה שבועית — 150% ומעלה בהתאם להסכם.</p>
+                  <p>עובדים בשעות נוספות גלובליות מדווחים נוכחות מלאה, אך אינם זכאים לתשלום נוסף מעבר למכסה הגלובלית.</p>
+                </div>
+              </details>
+              <details class="bg-white/80 rounded-2xl border border-ink-100" data-searchable data-tags="תורנות כוננות רופאים מנוחה אחרי תורנות">
+                <summary class="px-4 py-3 flex items-center justify-between gap-3"><span class="font-extrabold text-[13.5px]">תורנויות וכוננויות</span><svg class="chev text-ink-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="px-4 pb-4 pt-3 border-t border-ink-100 text-[12.5px] text-ink-600 leading-relaxed space-y-1.5">
+                  <p>סידור התורנויות מפורסם עד ה-25 בחודש הקודם. החלפת תורנות מחייבת אישור מנהל המחלקה ועדכון בסידור הרשמי — החלפה לא מעודכנת אינה משולמת.</p>
+                  <p>כוננות מזכה בתשלום כוננות; קריאה בפועל מזכה גם בתשלום שעות עבודה ובהחזר נסיעה או הזמנת הסעה דרך קש״ב.</p>
+                  <p>מנוחה לאחר תורנות היא זכות וחובה — יש לתאם מראש את הכיסוי המחלקתי.</p>
+                </div>
+              </details>
+              <details class="bg-white/80 rounded-2xl border border-ink-100" data-searchable data-tags="חופשה מחלה ימי הבראה השתלמות יתרות">
+                <summary class="px-4 py-3 flex items-center justify-between gap-3"><span class="font-extrabold text-[13.5px]">חופשה, מחלה והבראה</span><svg class="chev text-ink-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="px-4 pb-4 pt-3 border-t border-ink-100 text-[12.5px] text-ink-600 leading-relaxed space-y-1.5">
+                  <p>בקשת חופשה מוגשת במערכת הנוכחות ומאושרת דיגיטלית על ידי המנהל. צבירת חופשה מעבר לתקרה מחייבת אישור חריג.</p>
+                  <p>אישור מחלה נסרק ומועלה למערכת תוך 3 ימי עבודה. מחלת ילד, מחלת הורה והיריון מדווחים בקודים נפרדים.</p>
+                  <p>דמי הבראה משולמים אחת לשנה בהתאם לוותק ולהיקף המשרה.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="glass rounded-4xl p-5 sm:p-6 shadow-soft" data-searchable data-tags="החזרי נסיעות הסעות צוות זכאות חניה תחבורה ציבורית טפסים">
+            <h3 class="font-display font-black text-[17px] tracking-tight mb-1">החזרי נסיעות והסעות צוות</h3>
+            <p class="text-[12.5px] text-ink-600 font-medium mb-4">מי זכאי, על מה, ובאיזה טופס — כולל הממשק למערכת קש״ב.</p>
+            <div class="overflow-x-auto -mx-1 px-1">
+              <table class="w-full min-w-[560px] text-[12.5px] border-separate border-spacing-y-2">
+                <thead>
+                  <tr class="text-ink-400 text-[11.5px] font-black">
+                    <th class="text-right px-3 pb-1">סוג הזכאות</th>
+                    <th class="text-right px-3 pb-1">תנאי הזכאות</th>
+                    <th class="text-right px-3 pb-1">ערוץ הטיפול</th>
+                  </tr>
+                </thead>
+                <tbody class="text-ink-600">
+                  <tr class="bg-white/80">
+                    <td class="px-3 py-3 rounded-r-2xl border-y border-r border-ink-100 font-bold text-ink-900">החזר נסיעות חודשי</td>
+                    <td class="px-3 py-3 border-y border-ink-100">לכל עובד המתגורר מעל 500 מ׳ ממקום העבודה, לפי עלות נסיעה ציבורית בפועל ותקרה בהסכם.</td>
+                    <td class="px-3 py-3 rounded-l-2xl border-y border-l border-ink-100">אוטומטי בתלוש · עדכון כתובת בטופס 101</td>
+                  </tr>
+                  <tr class="bg-white/80">
+                    <td class="px-3 py-3 rounded-r-2xl border-y border-r border-ink-100 font-bold text-ink-900">הסעות צוות קליני</td>
+                    <td class="px-3 py-3 border-y border-ink-100">כניסה או יציאה ממשמרת בשעות ללא תחבורה ציבורית, תורנות לילה וקריאת כוננות.</td>
+                    <td class="px-3 py-3 rounded-l-2xl border-y border-l border-ink-100">הזמנה במערכת קש״ב</td>
+                  </tr>
+                  <tr class="bg-white/80">
+                    <td class="px-3 py-3 rounded-r-2xl border-y border-r border-ink-100 font-bold text-ink-900">החזר נסיעה בקריאת חירום</td>
+                    <td class="px-3 py-3 border-y border-ink-100">הגעה לקריאה דחופה ברכב פרטי, באישור אחראי המשמרת.</td>
+                    <td class="px-3 py-3 rounded-l-2xl border-y border-l border-ink-100">טופס החזר הוצאות + אישור מנהל</td>
+                  </tr>
+                  <tr class="bg-white/80">
+                    <td class="px-3 py-3 rounded-r-2xl border-y border-r border-ink-100 font-bold text-ink-900">תו חניה לעובד</td>
+                    <td class="px-3 py-3 border-y border-ink-100">לפי מכסת המחלקה וקריטריוני זכאות (משמרות, כוננות, מרחק מגורים).</td>
+                    <td class="px-3 py-3 rounded-l-2xl border-y border-l border-ink-100">בקשה מקוונת · אגף ביטחון, שלוחה 2610</td>
+                  </tr>
+                  <tr class="bg-white/80">
+                    <td class="px-3 py-3 rounded-r-2xl border-y border-r border-ink-100 font-bold text-ink-900">נסיעה לכנס או השתלמות</td>
+                    <td class="px-3 py-3 border-y border-ink-100">באישור מנהל היחידה ובכפוף לתקציב השתלמויות או למענק מחקר ייעודי.</td>
+                    <td class="px-3 py-3 rounded-l-2xl border-y border-l border-ink-100">טופס בקשה להשתלמות · אגף מש״א</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-5">
+          <div class="glass rounded-4xl p-5 sm:p-6 shadow-soft" data-searchable data-tags="הסכמים קיבוציים הסתדרות ארגון רופאים אחיות מנהלה סגל">
+            <h3 class="font-display font-black text-[17px] tracking-tight mb-1">הסכמים קיבוציים</h3>
+            <p class="text-[12.5px] text-ink-600 font-medium mb-4">ההסכם החל עליך נקבע לפי הדירוג המקצועי שלך בתלוש.</p>
+            <div class="space-y-2.5">
+              <div class="bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+                <div class="font-extrabold text-[13px]">דירוג רופאים</div>
+                <div class="text-[11.5px] text-ink-600 mt-0.5 leading-relaxed">הסכם הרופאים — תורנויות, כוננויות, שעות נוספות, תקן, קידום ומסלול התמחות.</div>
+              </div>
+              <div class="bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+                <div class="font-extrabold text-[13px]">דירוג אחים ואחיות</div>
+                <div class="text-[11.5px] text-ink-600 mt-0.5 leading-relaxed">תוספת משמרות, תוספת אחיות מוסמכות, קורסי-על ותקינה סיעודית.</div>
+              </div>
+              <div class="bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+                <div class="font-extrabold text-[13px]">דירוג מקצועות הבריאות</div>
+                <div class="text-[11.5px] text-ink-600 mt-0.5 leading-relaxed">פיזיותרפיה, ריפוי בעיסוק, תזונה, עבודה סוציאלית, מעבדה ורוקחות.</div>
+              </div>
+              <div class="bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+                <div class="font-extrabold text-[13px]">דירוג מנהלי וטכני</div>
+                <div class="text-[11.5px] text-ink-600 mt-0.5 leading-relaxed">מנהלה, מזכירות רפואיות, טכנאים, הנדסה, משק ולוגיסטיקה.</div>
+              </div>
+            </div>
+            <button class="mt-4 w-full rounded-2xl bg-white border border-ink-200 px-4 py-3 text-[12.5px] font-bold hover:border-rambam-300 transition">ספריית ההסכמים המלאה</button>
+          </div>
+
+          <div class="glass rounded-4xl p-5 sm:p-6 shadow-soft" data-searchable data-tags="טפסים אישיים 101 החזר הוצאות בקשת חופשה אישור מעסיק">
+            <h3 class="font-display font-black text-[17px] tracking-tight mb-3">טפסים אישיים נפוצים</h3>
+            <div class="space-y-2">
+              <button class="w-full flex items-center gap-3 bg-white/80 rounded-2xl px-4 py-3 border border-ink-100 hover:border-rambam-300 transition text-right">
+                <span class="w-8 h-8 rounded-xl bg-rambam-50 text-rambam-700 grid place-items-center text-[11px] font-black shrink-0">101</span>
+                <span class="text-[12.5px] font-bold flex-1">טופס 101 — כרטיס עובד שנתי</span>
+              </button>
+              <button class="w-full flex items-center gap-3 bg-white/80 rounded-2xl px-4 py-3 border border-ink-100 hover:border-rambam-300 transition text-right">
+                <span class="w-8 h-8 rounded-xl bg-rambam-50 text-rambam-700 grid place-items-center shrink-0">₪</span>
+                <span class="text-[12.5px] font-bold flex-1">טופס החזר הוצאות</span>
+              </button>
+              <button class="w-full flex items-center gap-3 bg-white/80 rounded-2xl px-4 py-3 border border-ink-100 hover:border-rambam-300 transition text-right">
+                <span class="w-8 h-8 rounded-xl bg-rambam-50 text-rambam-700 grid place-items-center shrink-0">◷</span>
+                <span class="text-[12.5px] font-bold flex-1">בקשת חופשה או היעדרות</span>
+              </button>
+              <button class="w-full flex items-center gap-3 bg-white/80 rounded-2xl px-4 py-3 border border-ink-100 hover:border-rambam-300 transition text-right">
+                <span class="w-8 h-8 rounded-xl bg-rambam-50 text-rambam-700 grid place-items-center shrink-0">✎</span>
+                <span class="text-[12.5px] font-bold flex-1">עדכון פרטים אישיים וחשבון בנק</span>
+              </button>
+              <button class="w-full flex items-center gap-3 bg-white/80 rounded-2xl px-4 py-3 border border-ink-100 hover:border-rambam-300 transition text-right">
+                <span class="w-8 h-8 rounded-xl bg-rambam-50 text-rambam-700 grid place-items-center shrink-0">◫</span>
+                <span class="text-[12.5px] font-bold flex-1">בקשה לקרן השתלמות והשתלמות מקצועית</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="rounded-4xl p-5 sm:p-6 shadow-lift text-white" style="background:linear-gradient(135deg,#7b2d8e,#241030)" data-searchable data-tags="ועד עובדים נציגות ארגון עובדים פנייה">
+            <h3 class="font-display font-black text-[17px] tracking-tight mb-1">ועד העובדים והנציגות</h3>
+            <p class="text-[12.5px] text-white/75 leading-relaxed">פניות בנושא תנאי העסקה, יישום הסכמים, ליווי בהליכים ורווחת העובד.</p>
+            <div class="mt-3 flex flex-wrap gap-1.5 text-[11.5px] font-bold">
+              <span class="bg-white/15 border border-white/20 px-2.5 py-1 rounded-lg">שלוחה 2250</span>
+              <span class="bg-white/15 border border-white/20 px-2.5 py-1 rounded-lg">קבלת קהל: ב׳, ד׳ 10:00–14:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL ד: שירותי החוקר ==================== -->
+    <div id="panel-research" role="tabpanel" aria-labelledby="tab-research" class="tab-panel hidden space-y-5">
+
+      <div class="grid lg:grid-cols-3 gap-5">
+        <div class="lg:col-span-2 space-y-5">
+
+          <div class="glass rounded-4xl p-5 sm:p-6 shadow-soft" data-searchable data-tags="הגשת פרוטוקול הלסינקי מטרות מסלול אישור מחקר קליני">
+            <div class="flex items-start justify-between gap-3 mb-1">
+              <h3 class="font-display font-black text-[17px] tracking-tight">הגשת פרוטוקול ואישורי ועדת הלסינקי</h3>
+              <span class="hidden sm:inline text-[11px] font-black text-rambam-700 bg-rambam-50 border border-rambam-100 px-2.5 py-1 rounded-full shrink-0">מערכת ״מטרות״</span>
+            </div>
+            <p class="text-[12.5px] text-ink-600 font-medium mb-4">כל הגשה מתבצעת דרך המערכת הממוחשבת בלבד. להלן המסלול המלא מהרעיון ועד מכתב האישור.</p>
+
+            <div class="relative pr-6 border-r-2 border-dashed border-rambam-200 space-y-4">
+              <div class="relative">
+                <span class="absolute -right-[31px] top-1 w-4 h-4 rounded-full bg-rambam-600 ring-4 ring-rambam-100"></span>
+                <div class="font-extrabold text-[13.5px] text-ink-900">1 · הקמת תיק מחקר במערכת ״מטרות״</div>
+                <p class="text-[12.5px] text-ink-600 leading-relaxed mt-0.5">פתיחת תיק על ידי החוקר הראשי, הגדרת סוג המחקר (התערבותי, תצפיתי, רטרוספקטיבי, ניסוי מסחרי) ושיוך המחלקה.</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -right-[31px] top-1 w-4 h-4 rounded-full bg-rambam-600 ring-4 ring-rambam-100"></span>
+                <div class="font-extrabold text-[13.5px] text-ink-900">2 · העלאת מסמכי החובה</div>
+                <p class="text-[12.5px] text-ink-600 leading-relaxed mt-0.5">פרוטוקול מלא, טופס הסכמה מדעת בעברית ובערבית, קורות חיים ותעודת GCP בתוקף של החוקרים, חוברת לחוקר (IB) ותקציב מוצע.</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -right-[31px] top-1 w-4 h-4 rounded-full bg-rambam-600 ring-4 ring-rambam-100"></span>
+                <div class="font-extrabold text-[13.5px] text-ink-900">3 · בדיקה מנהלית מקדימה</div>
+                <p class="text-[12.5px] text-ink-600 leading-relaxed mt-0.5">מזכירות הוועדה בודקת שלמות מסמכים תוך 5 ימי עבודה ומחזירה רשימת השלמות אם נדרש.</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -right-[31px] top-1 w-4 h-4 rounded-full bg-rambam-600 ring-4 ring-rambam-100"></span>
+                <div class="font-extrabold text-[13.5px] text-ink-900">4 · דיון בוועדה</div>
+                <p class="text-[12.5px] text-ink-600 leading-relaxed mt-0.5">הוועדה מתכנסת אחת לחודש. מחקרים בסיכון מזערי עשויים להידון במסלול מקוצר (Expedited) בין הישיבות.</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -right-[31px] top-1 w-4 h-4 rounded-full bg-rambam-600 ring-4 ring-rambam-100"></span>
+                <div class="font-extrabold text-[13.5px] text-ink-900">5 · מכתב אישור והתחלת גיוס</div>
+                <p class="text-[12.5px] text-ink-600 leading-relaxed mt-0.5">רק לאחר קבלת מכתב חתום ניתן להתחיל גיוס משתתפים או איסוף נתונים. האישור בתוקף לשנה וטעון חידוש.</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -right-[31px] top-1 w-4 h-4 rounded-full bg-deepv-600 ring-4 ring-rambam-100"></span>
+                <div class="font-extrabold text-[13.5px] text-ink-900">6 · ניהול שוטף</div>
+                <p class="text-[12.5px] text-ink-600 leading-relaxed mt-0.5">דיווח אירועים חריגים (SAE) תוך 24 שעות, הגשת תיקונים לפרוטוקול (Amendment) לפני יישומם, ודוח התקדמות שנתי.</p>
+              </div>
+            </div>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              <button class="rounded-xl bg-rambam-600 text-white px-4 py-2.5 text-[12.5px] font-extrabold hover:bg-rambam-700 transition shadow-soft">פתיחת תיק מחקר חדש</button>
+              <button class="rounded-xl bg-white border border-ink-200 px-4 py-2.5 text-[12.5px] font-bold hover:border-rambam-300 transition">רשימת מסמכי חובה</button>
+              <button class="rounded-xl bg-white border border-ink-200 px-4 py-2.5 text-[12.5px] font-bold hover:border-rambam-300 transition">לוח מועדי ישיבות</button>
+            </div>
+          </div>
+
+          <div class="glass rounded-4xl p-5 sm:p-6 shadow-soft" data-searchable data-tags="מתאמת מחקר CRC השכרה תיאום מחקרים קליניים גיוס משתתפים">
+            <h3 class="font-display font-black text-[17px] tracking-tight mb-1">שירותי מתאמות מחקר (CRC)</h3>
+            <p class="text-[12.5px] text-ink-600 font-medium mb-4">מאגר מתאמות מחקר קליני של הקריה, להשכרה למחלקות ולמחקרים ממומנים — בהיקף משרה מותאם לצורכי המחקר.</p>
+
+            <div class="grid sm:grid-cols-3 gap-3 mb-4">
+              <div class="bg-white/80 rounded-3xl p-4 border border-ink-100">
+                <div class="font-extrabold text-[13px] mb-1">מסלול חלקי</div>
+                <div class="text-[11.5px] text-ink-600 leading-relaxed">20%–40% משרה · מתאים למחקר יזום עם גיוס מוגבל ומספר ביקורים קטן.</div>
+              </div>
+              <div class="bg-white/80 rounded-3xl p-4 border border-ink-100 ring-2 ring-rambam-200">
+                <div class="font-extrabold text-[13px] mb-1">מסלול מלא <span class="text-[10px] text-rambam-700 font-black">· הנפוץ ביותר</span></div>
+                <div class="text-[11.5px] text-ink-600 leading-relaxed">50%–100% משרה · לניסויים מסחריים (Phase II–III) עם ניטור ודיווח שוטף ליזם.</div>
+              </div>
+              <div class="bg-white/80 rounded-3xl p-4 border border-ink-100">
+                <div class="font-extrabold text-[13px] mb-1">מסלול פרויקטלי</div>
+                <div class="text-[11.5px] text-ink-600 leading-relaxed">תמחור לפי משתתף מגויס · לאיסוף נתונים רטרוספקטיבי ולמאגרי מידע.</div>
+              </div>
+            </div>
+
+            <div class="bg-rambam-50/70 border border-rambam-100 rounded-3xl p-4">
+              <div class="font-extrabold text-[13px] text-rambam-800 mb-2">מה כלול בשירות</div>
+              <div class="grid sm:grid-cols-2 gap-x-5 gap-y-1.5 text-[12.5px] text-ink-600">
+                <div class="flex gap-2"><span class="text-rambam-600 font-black">·</span> גיוס משתתפים והחתמה על טופס הסכמה מדעת</div>
+                <div class="flex gap-2"><span class="text-rambam-600 font-black">·</span> תיאום ביקורים, בדיקות ולוגיסטיקת דגימות</div>
+                <div class="flex gap-2"><span class="text-rambam-600 font-black">·</span> הזנת נתונים ל-CRF ומענה לשאילתות (Queries)</div>
+                <div class="flex gap-2"><span class="text-rambam-600 font-black">·</span> ליווי ביקורי ניטור (Monitoring) וביקורות</div>
+                <div class="flex gap-2"><span class="text-rambam-600 font-black">·</span> ניהול תיק המחקר ומסמכי ה-ISF</div>
+                <div class="flex gap-2"><span class="text-rambam-600 font-black">·</span> דיווחי SAE ותיאום מול מזכירות הלסינקי</div>
+              </div>
+            </div>
+
+            <div class="mt-4 flex flex-wrap gap-2 items-center">
+              <button class="rounded-xl bg-rambam-600 text-white px-4 py-2.5 text-[12.5px] font-extrabold hover:bg-rambam-700 transition shadow-soft">בקשת הקצאת מתאמת מחקר</button>
+              <button class="rounded-xl bg-white border border-ink-200 px-4 py-2.5 text-[12.5px] font-bold hover:border-rambam-300 transition">מחירון ותנאי התקשרות</button>
+              <span class="text-[11.5px] font-semibold text-ink-400">זמן הקצאה ממוצע: 3 שבועות מאישור התקציב</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-5">
+          <div class="glass rounded-4xl p-5 sm:p-6 shadow-soft" data-searchable data-tags="מדדי ביצוע מחקר מענקים גרנטים פרסומים KPI">
+            <h3 class="font-display font-black text-[17px] tracking-tight mb-3">מדדי ביצוע — מחקר ומענקים</h3>
+            <div class="space-y-3">
+              <div>
+                <div class="flex items-end justify-between mb-1"><span class="text-[12.5px] font-bold">מחקרים חדשים שאושרו השנה</span><span class="font-display font-black text-[15px] text-rambam-700">186</span></div>
+                <div class="h-2 rounded-full bg-ink-100 overflow-hidden"><div class="h-full rounded-full" style="width:78%;background:linear-gradient(90deg,#d91b76,#7b2d8e)"></div></div>
+                <div class="text-[11px] text-ink-400 font-semibold mt-1">78% מיעד שנתי של 240</div>
+              </div>
+              <div>
+                <div class="flex items-end justify-between mb-1"><span class="text-[12.5px] font-bold">מענקים תחרותיים שנקלטו</span><span class="font-display font-black text-[15px] text-rambam-700">₪ 62.4M</span></div>
+                <div class="h-2 rounded-full bg-ink-100 overflow-hidden"><div class="h-full rounded-full" style="width:64%;background:linear-gradient(90deg,#d91b76,#7b2d8e)"></div></div>
+                <div class="text-[11px] text-ink-400 font-semibold mt-1">ISF, מדעני משרד הבריאות, האיחוד האירופי ותעשייה</div>
+              </div>
+              <div>
+                <div class="flex items-end justify-between mb-1"><span class="text-[12.5px] font-bold">זמן ממוצע מהגשה לאישור</span><span class="font-display font-black text-[15px] text-rambam-700">34 יום</span></div>
+                <div class="h-2 rounded-full bg-ink-100 overflow-hidden"><div class="h-full rounded-full" style="width:86%;background:linear-gradient(90deg,#10b981,#059669)"></div></div>
+                <div class="text-[11px] text-emerald-600 font-semibold mt-1">שיפור של 9 ימים מול השנה הקודמת</div>
+              </div>
+              <div>
+                <div class="flex items-end justify-between mb-1"><span class="text-[12.5px] font-bold">פרסומים בכתבי עת שפיטים</span><span class="font-display font-black text-[15px] text-rambam-700">1,120</span></div>
+                <div class="h-2 rounded-full bg-ink-100 overflow-hidden"><div class="h-full rounded-full" style="width:71%;background:linear-gradient(90deg,#d91b76,#7b2d8e)"></div></div>
+                <div class="text-[11px] text-ink-400 font-semibold mt-1">מתוכם 38% בשיתוף בין-מחלקתי</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass rounded-4xl p-5 sm:p-6 shadow-soft" data-searchable data-tags="תשתיות מחקר ביובנק מעבדה סטטיסטיקאי ייעוץ מתודולוגי">
+            <h3 class="font-display font-black text-[17px] tracking-tight mb-3">תשתיות מחקר זמינות</h3>
+            <div class="space-y-2">
+              <div class="bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+                <div class="font-extrabold text-[13px]">ייעוץ סטטיסטי ומתודולוגי</div>
+                <div class="text-[11.5px] text-ink-600 mt-0.5">תכנון גודל מדגם ותוכנית אנליזה — לפני ההגשה להלסינקי.</div>
+              </div>
+              <div class="bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+                <div class="font-extrabold text-[13px]">ביובנק ומאגר דגימות</div>
+                <div class="text-[11.5px] text-ink-600 mt-0.5">איחסון, קטלוג ושליפת דגימות בהתאם לאישור הוועדה.</div>
+              </div>
+              <div class="bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+                <div class="font-extrabold text-[13px]">יחידת ניסויים קליניים</div>
+                <div class="text-[11.5px] text-ink-600 mt-0.5">חדרי ביקור ייעודיים, מקררי דגימות מנוטרים ובית מרקחת מחקרי.</div>
+              </div>
+              <div class="bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+                <div class="font-extrabold text-[13px]">הכשרת GCP</div>
+                <div class="text-[11.5px] text-ink-600 mt-0.5">קורס מקוון חובה לכל חוקר; תעודה בתוקף לשלוש שנים.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-4xl p-5 sm:p-6 shadow-lift text-white" style="background:linear-gradient(135deg,#b81260,#371343)" data-searchable data-tags="קול קורא מענק הגשה מועד אחרון מחקר">
+            <div class="text-[11px] font-black bg-white/15 border border-white/20 inline-block px-2.5 py-1 rounded-full mb-2">קול קורא פתוח</div>
+            <h3 class="font-display font-black text-[16.5px] leading-snug">מענקי מחקר פנימיים — מסלול חוקרים צעירים</h3>
+            <p class="text-[12.5px] text-white/75 leading-relaxed mt-1.5">עד ₪ 120,000 למחקר יזום, בדגש על שיתופי פעולה בין-מחלקתיים ורפואה מותאמת אישית.</p>
+            <div class="mt-3 text-[12px] font-bold text-white/85">מועד אחרון להגשה: 30 בנובמבר · ליווי בהגשה: אגף מו״פ, שלוחה 3900</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============================ WAYFINDING ============================ -->
+  <section id="wayfinding" class="mt-10 lg:mt-14 scroll-mt-24">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-3 mb-4">
+      <div>
+        <h2 class="font-display font-black text-[21px] lg:text-[26px] tracking-tight">התמצאות בקמפוס ומתקנים</h2>
+        <p class="text-[13.5px] text-ink-600 font-medium mt-1">מפת הקריה הרפואית — בחרו מבנה כדי לראות מה נמצא בו, לאיזו קומה להגיע ומאיזה שער.</p>
+      </div>
+      <div class="flex gap-2 text-[11.5px] font-bold">
+        <span class="inline-flex items-center gap-1.5 bg-white/80 border border-ink-200 px-2.5 py-1.5 rounded-full"><span class="w-2.5 h-2.5 rounded-full" style="background:#d91b76"></span> אשפוז</span>
+        <span class="inline-flex items-center gap-1.5 bg-white/80 border border-ink-200 px-2.5 py-1.5 rounded-full"><span class="w-2.5 h-2.5 rounded-full" style="background:#7b2d8e"></span> מנהלה ומחקר</span>
+        <span class="inline-flex items-center gap-1.5 bg-white/80 border border-ink-200 px-2.5 py-1.5 rounded-full"><span class="w-2.5 h-2.5 rounded-full" style="background:#8b93a9"></span> חניה ותשתיות</span>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-[1.25fr_1fr] gap-5">
+      <!-- Map -->
+      <div class="glass rounded-4xl p-4 sm:p-5 shadow-soft">
+        <svg viewBox="0 0 620 430" class="w-full h-auto" role="img" aria-label="מפת קמפוס הקריה הרפואית רמב״ם">
+          <defs>
+            <linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#dbeafe"/><stop offset="100%" stop-color="#bfdbfe"/>
+            </linearGradient>
+            <linearGradient id="gHosp" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#e8398f"/><stop offset="100%" stop-color="#b81260"/>
+            </linearGradient>
+            <linearGradient id="gAdmin" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#8e44a4"/><stop offset="100%" stop-color="#4c1a5c"/>
+            </linearGradient>
+            <linearGradient id="gPark" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#a2aabc"/><stop offset="100%" stop-color="#6f7a91"/>
+            </linearGradient>
+          </defs>
+
+          <rect x="0" y="0" width="620" height="430" rx="22" fill="#f2f4f9"/>
+          <rect x="0" y="0" width="120" height="430" fill="url(#gSea)" opacity=".75"/>
+          <text x="42" y="215" font-size="12" font-weight="700" fill="#3b6fa8" transform="rotate(-90 42 215)">הים התיכון · חוף הקריה</text>
+
+          <path d="M120 372h480" stroke="#cfd6e4" stroke-width="16" stroke-linecap="round"/>
+          <text x="360" y="399" font-size="11" font-weight="700" fill="#8b93a9" text-anchor="middle">שדרות הכניסה הראשית · שער דרומי</text>
+          <path d="M300 40v332" stroke="#e2e7f0" stroke-width="11"/>
+          <path d="M140 210h460" stroke="#e2e7f0" stroke-width="11"/>
+
+          <!-- buildings -->
+          <g id="mapGroup">
+            <g class="bldg" data-bldg="ofer" tabindex="0" role="button" aria-label="מגדל סמי עופר">
+              <rect x="150" y="52" width="126" height="132" rx="14" fill="url(#gHosp)"/>
+              <text x="213" y="108" font-size="13" font-weight="800" fill="#fff" text-anchor="middle">מגדל</text>
+              <text x="213" y="126" font-size="13" font-weight="800" fill="#fff" text-anchor="middle">סמי עופר</text>
+              <text x="213" y="146" font-size="10" font-weight="700" fill="#ffd8ec" text-anchor="middle">אשפוז · 0 עד 12</text>
+            </g>
+            <g class="bldg" data-bldg="historic" tabindex="0" role="button" aria-label="הבניין ההיסטורי">
+              <rect x="330" y="60" width="140" height="112" rx="14" fill="url(#gAdmin)"/>
+              <text x="400" y="108" font-size="13" font-weight="800" fill="#fff" text-anchor="middle">הבניין</text>
+              <text x="400" y="126" font-size="13" font-weight="800" fill="#fff" text-anchor="middle">ההיסטורי</text>
+              <text x="400" y="146" font-size="10" font-weight="700" fill="#e6d3ee" text-anchor="middle">מכונים ומעבדות</text>
+            </g>
+            <g class="bldg" data-bldg="children" tabindex="0" role="button" aria-label="בניין רות רפפורט לילדים">
+              <rect x="150" y="240" width="126" height="106" rx="14" fill="url(#gHosp)"/>
+              <text x="213" y="286" font-size="12.5" font-weight="800" fill="#fff" text-anchor="middle">רות רפפורט</text>
+              <text x="213" y="304" font-size="12.5" font-weight="800" fill="#fff" text-anchor="middle">לילדים</text>
+              <text x="213" y="323" font-size="10" font-weight="700" fill="#ffd8ec" text-anchor="middle">אשפוז ילדים ומיון</text>
+            </g>
+            <g class="bldg" data-bldg="admin" tabindex="0" role="button" aria-label="מבנה המנהלה והנהלה">
+              <rect x="330" y="240" width="112" height="106" rx="14" fill="url(#gAdmin)"/>
+              <text x="386" y="288" font-size="12.5" font-weight="800" fill="#fff" text-anchor="middle">מנהלה</text>
+              <text x="386" y="306" font-size="12.5" font-weight="800" fill="#fff" text-anchor="middle">והנהלה</text>
+              <text x="386" y="325" font-size="10" font-weight="700" fill="#e6d3ee" text-anchor="middle">מש״א · שכר · מו״פ</text>
+            </g>
+            <g class="bldg" data-bldg="parking" tabindex="0" role="button" aria-label="חניון תת קרקעי מרכזי">
+              <rect x="486" y="200" width="104" height="146" rx="14" fill="url(#gPark)"/>
+              <text x="538" y="262" font-size="12.5" font-weight="800" fill="#fff" text-anchor="middle">חניון</text>
+              <text x="538" y="280" font-size="12.5" font-weight="800" fill="#fff" text-anchor="middle">מרכזי</text>
+              <text x="538" y="299" font-size="10" font-weight="700" fill="#eef0f6" text-anchor="middle">3 קומות תת״ק</text>
+            </g>
+            <g class="bldg" data-bldg="er" tabindex="0" role="button" aria-label="מלר״ד מיון מבוגרים">
+              <rect x="486" y="60" width="104" height="112" rx="14" fill="url(#gHosp)"/>
+              <text x="538" y="108" font-size="12.5" font-weight="800" fill="#fff" text-anchor="middle">מלר״ד</text>
+              <text x="538" y="126" font-size="12.5" font-weight="800" fill="#fff" text-anchor="middle">מיון</text>
+              <text x="538" y="145" font-size="10" font-weight="700" fill="#ffd8ec" text-anchor="middle">כניסת אמבולנסים</text>
+            </g>
+          </g>
+          <circle cx="300" cy="372" r="9" fill="#fff" stroke="#b81260" stroke-width="3"/>
+          <text x="300" y="356" font-size="10" font-weight="800" fill="#b81260" text-anchor="middle">אתם כאן</text>
+        </svg>
+        <p class="text-[11.5px] text-ink-400 font-semibold mt-2 text-center">תרשים סכמטי להתמצאות · לחיצה על מבנה מציגה את פירוט הקומות</p>
+      </div>
+
+      <!-- Building details -->
+      <div class="space-y-5">
+        <div id="bldgPanel" class="glass rounded-4xl p-5 sm:p-6 shadow-soft min-h-[300px]">
+          <!-- filled by JS -->
+        </div>
+
+        <div class="glass rounded-4xl p-5 sm:p-6 shadow-soft" data-searchable data-tags="חדר אוכל קפיטריה מזנון בית קפה בנק דואר חנות מרכז שירות שעות פתיחה">
+          <h3 class="font-display font-black text-[17px] tracking-tight mb-3">מתקנים, מזון ומרכזי שירות</h3>
+          <div class="grid sm:grid-cols-2 gap-2.5">
+            <div class="bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+              <div class="font-extrabold text-[13px]">חדר אוכל מרכזי לעובדים</div>
+              <div class="text-[11.5px] text-ink-600 mt-0.5 leading-relaxed">מבנה השירותים, קומה 0 · ארוחת בוקר 07:00–09:30, צהריים 12:00–15:30 · חיוב בכרטיס עובד.</div>
+            </div>
+            <div class="bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+              <div class="font-extrabold text-[13px]">מזנון וקפה — לובי סמי עופר</div>
+              <div class="text-[11.5px] text-ink-600 mt-0.5 leading-relaxed">קומה 0 · 06:30–21:00 · הנחת עובדים בהצגת תג.</div>
+            </div>
+            <div class="bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+              <div class="font-extrabold text-[13px]">מרכז שירות לעובד</div>
+              <div class="text-[11.5px] text-ink-600 mt-0.5 leading-relaxed">מבנה המנהלה, קומה 1 · תגי עובד, אישורים, תווי חניה · א׳–ה׳ 08:00–15:00.</div>
+            </div>
+            <div class="bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+              <div class="font-extrabold text-[13px]">סניף בנק ודואר</div>
+              <div class="text-[11.5px] text-ink-600 mt-0.5 leading-relaxed">הבניין ההיסטורי, קומה 0 · בנק א׳–ה׳ 08:30–13:30 · דואר עד 15:00.</div>
+            </div>
+            <div class="bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+              <div class="font-extrabold text-[13px]">בית מרקחת ציבורי וחנות נוחות</div>
+              <div class="text-[11.5px] text-ink-600 mt-0.5 leading-relaxed">לובי סמי עופר, קומה 0 · 08:00–20:00.</div>
+            </div>
+            <div class="bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+              <div class="font-extrabold text-[13px]">חדר הנקה, חדר שקט וחדר תפילה</div>
+              <div class="text-[11.5px] text-ink-600 mt-0.5 leading-relaxed">סמי עופר קומה 2 (הנקה ושקט) · בית כנסת בבניין ההיסטורי, קומה 0.</div>
+            </div>
+            <div class="bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+              <div class="font-extrabold text-[13px]">מרכז יום ומעון לילדי עובדים</div>
+              <div class="text-[11.5px] text-ink-600 mt-0.5 leading-relaxed">שער מזרחי · רישום שנתי דרך מרכז השירות לעובד.</div>
+            </div>
+            <div class="bg-white/80 rounded-2xl px-4 py-3 border border-ink-100">
+              <div class="font-extrabold text-[13px]">חדר כושר ורווחת העובד</div>
+              <div class="text-[11.5px] text-ink-600 mt-0.5 leading-relaxed">מבנה השירותים, קומה 1− · מנוי מסובסד דרך ועד העובדים.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="mt-12 lg:mt-16">
+    <div class="glass rounded-4xl p-6 sm:p-8 shadow-soft">
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-2xl grid place-items-center text-white shadow-soft" style="background:linear-gradient(135deg,#b81260,#7b2d8e)">
+              <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><path d="M16 3.6 4.8 9.2v8.1c0 6.6 4.6 10.5 11.2 12.3 6.6-1.8 11.2-5.7 11.2-12.3V9.2L16 3.6Z" stroke="#fff" stroke-width="1.9" stroke-linejoin="round"/><path d="M16 10.4v10.4M10.8 15.6h10.4" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg>
+            </div>
+            <div class="font-display font-black text-[16px]">רמב״ם 360 — פורטל הניהול, השירותים והמחקר</div>
+          </div>
+          <p class="text-[12.5px] text-ink-600 leading-relaxed max-w-[62ch]">
+            הפורטל השוטף של הקריה הרפואית רמב״ם לעובדים, מנהלים וחוקרים. הוא אינו מחליף נהלים מחייבים —
+            במקרה של סתירה, הנוסח המחייב הוא זה שבספר הנהלים המוסדי ובהסכמי העבודה.
+          </p>
+        </div>
+        <div>
+          <div class="font-extrabold text-[13px] mb-2">ניווט מהיר</div>
+          <div class="space-y-1.5 text-[12.5px] text-ink-600 font-semibold">
+            <button data-goto="org" class="block hover:text-rambam-700 transition">על הארגון</button>
+            <button data-goto="systems" class="block hover:text-rambam-700 transition">מערכות ושירותים</button>
+            <button data-goto="rights" class="block hover:text-rambam-700 transition">זכויות ושכר</button>
+            <button data-goto="research" class="block hover:text-rambam-700 transition">שירותי החוקר</button>
+            <a href="#wayfinding" class="block hover:text-rambam-700 transition">מפת הקמפוס</a>
+          </div>
+        </div>
+        <div>
+          <div class="font-extrabold text-[13px] mb-2">מספרים שכדאי לזכור</div>
+          <div class="space-y-1.5 text-[12.5px] text-ink-600 font-semibold">
+            <div>מרכזייה — 2000</div>
+            <div>קוד כחול — 2222</div>
+            <div>ביטחון — 3333</div>
+            <div>מוקד מחשוב — 4444</div>
+            <div>תחזוקה — 5555</div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-6 pt-5 border-t border-ink-200/70 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11.5px] text-ink-400 font-semibold">
+        <div>© הקריה הרפואית רמב״ם · אגף משאבי אנוש ואגף מערכות מידע · גרסה 3.2</div>
+        <div class="flex gap-4">
+          <button class="hover:text-rambam-700 transition">נגישות</button>
+          <button class="hover:text-rambam-700 transition">מדיניות פרטיות</button>
+          <button class="hover:text-rambam-700 transition">דיווח על תקלה בפורטל</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<!-- ============================ FAB + CHAT ============================ -->
+<div class="fixed bottom-5 left-5 z-[80] no-print">
+  <button id="fab" class="relative fab-ring rounded-full grid place-items-center text-white shadow-lift hover:scale-105 active:scale-95 transition-transform"
+          style="width:60px;height:60px;background:linear-gradient(135deg,#d91b76,#7b2d8e)" aria-label="פתיחת העוזר הדיגיטלי" aria-expanded="false">
+    <svg id="fabIcon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.4 12.2c0 4-3.8 7.2-8.4 7.2-1 0-2-.15-2.9-.42L4 20.6l1.7-4.2A6.9 6.9 0 0 1 3.6 12.2C3.6 8.2 7.4 5 12 5s8.4 3.2 8.4 7.2Z"/>
+      <path d="M8.6 11.6h.01M12 11.6h.01M15.4 11.6h.01"/>
+    </svg>
+  </button>
+</div>
+
+<div id="chatWindow" class="hidden fixed z-[85] bottom-[92px] left-4 right-4 sm:right-auto sm:left-5 sm:w-[400px] max-h-[min(640px,78vh)] flex flex-col rounded-4xl overflow-hidden shadow-lift animate-popIn no-print">
+  <div class="px-4 py-3.5 text-white flex items-center gap-3" style="background:linear-gradient(135deg,#b81260,#4c1a5c)">
+    <div class="w-10 h-10 rounded-2xl bg-white/15 border border-white/20 grid place-items-center shrink-0">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3.4 4.8 6.9v5.4c0 4.4 3 7 7.2 8.3 4.2-1.3 7.2-3.9 7.2-8.3V6.9L12 3.4Z"/><path d="M12 9v5.4M9.3 11.7h5.4"/></svg>
+    </div>
+    <div class="flex-1 leading-tight">
+      <div class="font-display font-black text-[14.5px]">העוזר הדיגיטלי של רמב״ם 360</div>
+      <div class="text-[11px] text-white/70 font-semibold flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-300"></span> מקוון · עונה על נהלים ותהליכים</div>
+    </div>
+    <button id="chatClose" class="w-8 h-8 rounded-xl bg-white/15 hover:bg-white/25 grid place-items-center transition" aria-label="סגירת הצ׳אט">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+
+  <div id="chatBody" class="flex-1 overflow-y-auto thin-scroll p-4 space-y-3 bg-white/92 backdrop-blur-xl"></div>
+
+  <div class="px-3 pt-2 pb-1 bg-white/92 border-t border-ink-100">
+    <div id="chatChips" class="flex gap-1.5 overflow-x-auto no-scrollbar pb-2">
+      <button class="chip shrink-0 text-[11.5px] font-bold bg-rambam-50 text-rambam-700 border border-rambam-100 rounded-full px-3 py-1.5 hover:bg-rambam-100 transition">איך מזמינים הסעה?</button>
+      <button class="chip shrink-0 text-[11.5px] font-bold bg-rambam-50 text-rambam-700 border border-rambam-100 rounded-full px-3 py-1.5 hover:bg-rambam-100 transition">איך מגישים לוועדת הלסינקי?</button>
+      <button class="chip shrink-0 text-[11.5px] font-bold bg-rambam-50 text-rambam-700 border border-rambam-100 rounded-full px-3 py-1.5 hover:bg-rambam-100 transition">ציוד רפואי חדש — מה עושים?</button>
+      <button class="chip shrink-0 text-[11.5px] font-bold bg-rambam-50 text-rambam-700 border border-rambam-100 rounded-full px-3 py-1.5 hover:bg-rambam-100 transition">מתי משולם השכר?</button>
+      <button class="chip shrink-0 text-[11.5px] font-bold bg-rambam-50 text-rambam-700 border border-rambam-100 rounded-full px-3 py-1.5 hover:bg-rambam-100 transition">מתאמת מחקר</button>
+      <button class="chip shrink-0 text-[11.5px] font-bold bg-rambam-50 text-rambam-700 border border-rambam-100 rounded-full px-3 py-1.5 hover:bg-rambam-100 transition">איפה מגדל סמי עופר?</button>
+      <button class="chip shrink-0 text-[11.5px] font-bold bg-rambam-50 text-rambam-700 border border-rambam-100 rounded-full px-3 py-1.5 hover:bg-rambam-100 transition">שעות נוספות</button>
+      <button class="chip shrink-0 text-[11.5px] font-bold bg-rambam-50 text-rambam-700 border border-rambam-100 rounded-full px-3 py-1.5 hover:bg-rambam-100 transition">תקלה בקמיליון</button>
+    </div>
+  </div>
+
+  <form id="chatForm" class="p-3 bg-white/95 border-t border-ink-100 flex items-center gap-2">
+    <input id="chatInput" type="text" autocomplete="off"
+           class="flex-1 h-11 px-4 rounded-2xl bg-ink-50 border border-ink-200 text-[13.5px] placeholder:text-ink-400 focus:bg-white focus:border-rambam-400 focus:ring-4 focus:ring-rambam-100 outline-none transition"
+           placeholder="שאלו על נוהל, מערכת או זכות…" aria-label="הקלדת שאלה לעוזר הדיגיטלי">
+    <button type="submit" class="w-11 h-11 rounded-2xl grid place-items-center text-white shadow-soft hover:opacity-90 transition shrink-0" style="background:linear-gradient(135deg,#d91b76,#7b2d8e)" aria-label="שליחה">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4 3.6 10.8l6.6 2.6 2.6 6.6L20 4Z"/><path d="M10.2 13.4 20 4"/></svg>
+    </button>
+  </form>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* =======================================================================
+     1. עזרים כלליים
+     ======================================================================= */
+  const $  = (s, r) => (r || document).querySelector(s);
+  const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+  const debounce = (fn, ms) => { let t; return function () { clearTimeout(t); t = setTimeout(() => fn.apply(this, arguments), ms); }; };
+
+  /* =======================================================================
+     2. תפריטים נפתחים (התראות / פרופיל) + מגירת מובייל
+     ======================================================================= */
+  const notifBtn = $('#notifBtn'), notifPanel = $('#notifPanel');
+  const profileBtn = $('#profileBtn'), profilePanel = $('#profilePanel');
+
+  function toggleDropdown(btn, panel, force) {
+    const open = force !== undefined ? force : panel.classList.contains('hidden');
+    panel.classList.toggle('hidden', !open);
+    btn.setAttribute('aria-expanded', String(open));
+  }
+  notifBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    toggleDropdown(profileBtn, profilePanel, false);
+    toggleDropdown(notifBtn, notifPanel);
+  });
+  profileBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    toggleDropdown(notifBtn, notifPanel, false);
+    toggleDropdown(profileBtn, profilePanel);
+  });
+  document.addEventListener('click', e => {
+    if (!notifPanel.contains(e.target)) toggleDropdown(notifBtn, notifPanel, false);
+    if (!profilePanel.contains(e.target)) toggleDropdown(profileBtn, profilePanel, false);
+  });
+
+  const drawer = $('#drawer'), drawerOverlay = $('#drawerOverlay'), menuBtn = $('#menuBtn');
+  function setDrawer(open) {
+    drawer.classList.toggle('translate-x-full', !open);
+    drawerOverlay.classList.toggle('hidden', !open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  menuBtn.addEventListener('click', () => setDrawer(true));
+  $('#drawerClose').addEventListener('click', () => setDrawer(false));
+  drawerOverlay.addEventListener('click', () => setDrawer(false));
+  $('#drawerNav').addEventListener('click', e => { if (e.target.closest('a,button')) setDrawer(false); });
+
+  /* =======================================================================
+     3. ניווט בין ארבעת עולמות התוכן (טאבים)
+     ======================================================================= */
+  const tabs = $$('.tab-btn');
+  const panels = $$('.tab-panel');
+
+  function switchTab(name, scroll) {
+    tabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.tab === name)));
+    panels.forEach(p => p.classList.toggle('hidden', p.id !== 'panel-' + name));
+    if (scroll) {
+      const y = $('#worlds').getBoundingClientRect().top + window.scrollY - 96;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  }
+  tabs.forEach(t => t.addEventListener('click', () => {
+    if (searchInput.value.trim()) resetSearch();
+    switchTab(t.dataset.tab, false);
+  }));
+
+  // ניווט מקלדת בין הטאבים
+  $('[role="tablist"]').addEventListener('keydown', e => {
+    const i = tabs.findIndex(t => t.getAttribute('aria-selected') === 'true');
+    let n = null;
+    if (e.key === 'ArrowLeft')  n = (i + 1) % tabs.length;          // RTL
+    if (e.key === 'ArrowRight') n = (i - 1 + tabs.length) % tabs.length;
+    if (e.key === 'Home') n = 0;
+    if (e.key === 'End')  n = tabs.length - 1;
+    if (n !== null) { e.preventDefault(); tabs[n].focus(); tabs[n].click(); }
+  });
+
+  // כל כפתור עם data-goto מוביל לעולם התוכן המתאים
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('[data-goto]');
+    if (!btn) return;
+    if (searchInput.value.trim()) resetSearch();
+    switchTab(btn.dataset.goto, true);
+  });
+
+  /* =======================================================================
+     4. חיפוש מהיר ודינמי בכל תוכן הפורטל
+     ======================================================================= */
+  const searchInput  = $('#globalSearch');
+  const searchStatus = $('#searchStatus');
+  const searchCount  = $('#searchCount');
+  const clearBtn     = $('#clearSearch');
+  const hero         = $('#hero');
+  const quicklinks   = $('#quicklinks');
+  const siteFooter   = document.querySelector('footer');
+  const tabBar       = $('[role="tablist"]');
+
+  function unitText(el) {
+    if (!el.dataset.searchText) {
+      el.dataset.searchText = ((el.textContent || '') + ' ' + (el.dataset.tags || ''))
+        .replace(/\s+/g, ' ').trim().toLowerCase();
+    }
+    return el.dataset.searchText;
+  }
+
+  function clearHighlights(root) {
+    $$('mark.hit', root).forEach(m => m.replaceWith(document.createTextNode(m.textContent)));
+    root.normalize();
+  }
+
+  function highlight(root, tokens) {
+    const rx = new RegExp('(' + tokens.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')', 'gi');
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode(n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        const p = n.parentElement;
+        if (!p || p.closest('script,style,mark,svg')) return NodeFilter.FILTER_REJECT;
+        if (p.closest('[hidden]')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const nodes = [];
+    while (walker.nextNode() && nodes.length < 1500) nodes.push(walker.currentNode);
+    nodes.forEach(node => {
+      if (!rx.test(node.nodeValue)) { rx.lastIndex = 0; return; }
+      rx.lastIndex = 0;
+      const frag = document.createDocumentFragment();
+      let last = 0, m;
+      while ((m = rx.exec(node.nodeValue)) !== null) {
+        if (m.index > last) frag.appendChild(document.createTextNode(node.nodeValue.slice(last, m.index)));
+        const mk = document.createElement('mark');
+        mk.className = 'hit';
+        mk.textContent = m[0];
+        frag.appendChild(mk);
+        last = m.index + m[0].length;
+      }
+      if (last < node.nodeValue.length) frag.appendChild(document.createTextNode(node.nodeValue.slice(last)));
+      node.replaceWith(frag);
+    });
+  }
+
+  function resetSearch() {
+    searchInput.value = '';
+    clearBtn.classList.add('hidden');
+    searchStatus.classList.add('hidden');
+    clearHighlights(document.body);
+    $$('[data-searchable]').forEach(u => { u.hidden = false; });
+    hero.hidden = false;
+    quicklinks.hidden = false;
+    $('#wayfinding').hidden = false;
+    siteFooter.hidden = false;
+    tabBar.hidden = false;
+    applyRoleFilter();
+    const active = tabs.find(t => t.getAttribute('aria-selected') === 'true');
+    switchTab(active ? active.dataset.tab : 'org', false);
+  }
+
+  function runSearch(raw) {
+    const q = raw.trim().toLowerCase();
+    clearBtn.classList.toggle('hidden', !q);
+
+    if (!q) { resetSearch(); return; }
+
+    const tokens = q.split(/\s+/).filter(t => t.length > 0);
+    if (!tokens.length) { return; }
+
+    clearHighlights(document.body);
+    const units = $$('[data-searchable]');
+    units.forEach(u => { u._match = tokens.every(t => unitText(u).indexOf(t) !== -1); });
+    units.forEach(u => {
+      const kids = $$('[data-searchable]', u);
+      u._selfOnly = u._match && !kids.some(k => k._match);
+    });
+
+    let shown = 0;
+    units.forEach(u => {
+      let show = u._match || $$('[data-searchable]', u).some(k => k._match);
+      if (!show) {
+        let p = u.parentElement;
+        while (p) { if (p.dataset && p.dataset.searchable !== undefined && p._selfOnly) { show = true; break; } p = p.parentElement; }
+      }
+      u.hidden = !show;
+      if (show && u._match) shown++;
+    });
+
+    // הצגת כל עולמות התוכן במקביל, והסתרת אלה שאין בהם תוצאה
+    panels.forEach(p => {
+      const has = $$('[data-searchable]', p).some(u => !u.hidden);
+      p.classList.toggle('hidden', !has);
+    });
+    hero.hidden = true;
+    tabBar.hidden = true;
+    quicklinks.hidden = !$$('[data-searchable]', quicklinks).some(u => !u.hidden);
+    $('#wayfinding').hidden = !$$('[data-searchable]', $('#wayfinding')).some(u => !u.hidden);
+    siteFooter.hidden = true;
+
+    // הדגשת המילים שנמצאו
+    $$('[data-searchable]').filter(u => !u.hidden && u._match).slice(0, 60).forEach(u => highlight(u, tokens));
+
+    searchStatus.classList.remove('hidden');
+    searchCount.textContent = shown
+      ? 'נמצאו ' + shown + ' תוצאות עבור "' + raw.trim() + '" — התוצאות מסומנות בגוף הפורטל'
+      : 'לא נמצאו תוצאות עבור "' + raw.trim() + '". נסו: הסעות, הלסינקי, תלוש, ועדת טכנולוגיות, חניון';
+  }
+
+  searchInput.addEventListener('input', debounce(function () { runSearch(this.value); }, 130));
+  clearBtn.addEventListener('click', () => { resetSearch(); searchInput.focus(); });
+  $('#resetSearchLink').addEventListener('click', () => { resetSearch(); searchInput.focus(); });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === '/' && !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)) {
+      e.preventDefault(); searchInput.focus(); searchInput.select();
+    }
+    if (e.key === 'Escape') {
+      if (document.activeElement === searchInput && searchInput.value) { resetSearch(); return; }
+      toggleDropdown(notifBtn, notifPanel, false);
+      toggleDropdown(profileBtn, profilePanel, false);
+      if (!chatWindow.classList.contains('hidden')) setChat(false);
+      setDrawer(false);
+    }
+  });
+
+  /* =======================================================================
+     5. סינון אינדקס בעלי התפקידים
+     ======================================================================= */
+  const SEARCH_PLACEHOLDER_FULL  = searchInput.getAttribute('placeholder');
+  const SEARCH_PLACEHOLDER_SHORT = 'חיפוש בפורטל…';
+  function syncPlaceholder() {
+    searchInput.setAttribute('placeholder', window.innerWidth < 640 ? SEARCH_PLACEHOLDER_SHORT : SEARCH_PLACEHOLDER_FULL);
+  }
+  syncPlaceholder();
+  window.addEventListener('resize', debounce(syncPlaceholder, 200));
+
+  const roleFilters = $('#roleFilters');
+  roleFilters.addEventListener('click', e => {
+    const b = e.target.closest('.role-filter');
+    if (!b) return;
+    $$('.role-filter', roleFilters).forEach(f => {
+      const on = f === b;
+      f.classList.toggle('bg-rambam-600', on);
+      f.classList.toggle('text-white', on);
+      f.classList.toggle('border-rambam-600', on);
+      f.classList.toggle('bg-white/70', !on);
+      f.classList.toggle('text-ink-600', !on);
+      f.classList.toggle('border-ink-200', !on);
+    });
+    applyRoleFilter();
+  });
+
+  function applyRoleFilter() {
+    const active = $('.role-filter.bg-rambam-600', roleFilters) || $('.role-filter', roleFilters);
+    const f = active ? active.dataset.filter : 'all';
+    $$('.role-card').forEach(c => { c.hidden = !(f === 'all' || c.dataset.cat === f); });
+  }
+
+  /* =======================================================================
+     6. מפת הקמפוס — התמצאות פיזית
+     ======================================================================= */
+  const BUILDINGS = {
+    ofer: {
+      name: 'מגדל סמי עופר לאשפוז',
+      badge: 'אשפוז · 12 קומות',
+      color: 'linear-gradient(135deg,#e8398f,#b81260)',
+      lead: 'מגדל האשפוז המרכזי של הקריה. הכניסה הראשית מהלובי בקומה 0, מול השער הדרומי. שמונה מעליות מבקרים ושתי מעליות צוות ייעודיות.',
+      floors: [
+        ['0',  'לובי, קבלה ומשרד מודיעין, מזנון ובית מרקחת ציבורי'],
+        ['1',  'מרפאות חוץ ומכון בדיקות טרום-ניתוחיות'],
+        ['2',  'חדרי ניתוח, התאוששות וחדר שקט לעובדים'],
+        ['3',  'טיפול נמרץ כללי, טיפול נמרץ לב והיחידה למניעת זיהומים'],
+        ['4–7', 'מחלקות אשפוז פנימיות וכירורגיות'],
+        ['8–10', 'מחלקות אשפוז ייעודיות ומרכז השתלות'],
+        ['11–12', 'חדרי ישיבות, ספרייה רפואית וחדרי הכשרה']
+      ],
+      tips: ['גישה לצוות בכרטיס עובד דרך מעליות המערך המזרחי', 'מעבר תת-קרקעי מקושר לחניון המרכזי ולבניין ההיסטורי']
+    },
+    historic: {
+      name: 'הבניין ההיסטורי',
+      badge: 'מכונים, מעבדות ושירותים',
+      color: 'linear-gradient(135deg,#8e44a4,#4c1a5c)',
+      lead: 'המבנה המקורי של בית החולים, משמש כיום למכונים אבחנתיים, מעבדות ושירותים לעובד ולציבור.',
+      floors: [
+        ['1−', 'מכון הדמיה: CT, MRI, רנטגן · ממונה בטיחות קרינה'],
+        ['0',  'סניף בנק, דואר, בית כנסת ואולם כנסים'],
+        ['1',  'מעבדות כימיה, המטולוגיה ומיקרוביולוגיה'],
+        ['2',  'מכון פתולוגיה ובנק דם'],
+        ['3',  'מעבדות מחקר ויחידת הביובנק']
+      ],
+      tips: ['מסירת דגימות דחופות — דלפק מעבדה, קומה 1, פתוח 24/7', 'הגישה לאולם הכנסים מהחצר הפנימית בלבד']
+    },
+    children: {
+      name: 'בניין רות רפפורט לילדים',
+      badge: 'אשפוז ילדים',
+      color: 'linear-gradient(135deg,#e8398f,#b81260)',
+      lead: 'בית החולים לילדים — אשפוז, מיון ילדים ומרפאות ייעוץ, עם כניסה נפרדת מהחניון הצפוני.',
+      floors: [
+        ['0', 'מיון ילדים, קבלה ומרחב המתנה למשפחות'],
+        ['1', 'מרפאות ילדים ומכון התפתחות הילד'],
+        ['2', 'מחלקות אשפוז ילדים א׳–ב׳'],
+        ['3', 'טיפול נמרץ ילדים ופגייה'],
+        ['4', 'המטו-אונקולוגיה ילדים ובית ספר בית-חולימי']
+      ],
+      tips: ['כניסת הורים מלווים עד 22:00 · לאחר מכן דרך המיון', 'חדר הנקה וחדר משחקים בקומה 1']
+    },
+    admin: {
+      name: 'מבנה המנהלה וההנהלה',
+      badge: 'מנהלה · מש״א · מו״פ',
+      color: 'linear-gradient(135deg,#8e44a4,#4c1a5c)',
+      lead: 'מרכז המנהלה של הקריה — כאן מטפלים בכל מה שאינו קליני: כוח אדם, שכר, רכש, מחקר וניהול.',
+      floors: [
+        ['0', 'מרכז שירות לעובד, הנפקת תגים ותווי חניה'],
+        ['1', 'אגף משאבי אנוש, מדור שכר וחשבות, ועד העובדים'],
+        ['2', 'לשכת מנהל הקריה, הנהלה ראשית וחדרי ועדות'],
+        ['3', 'אגף מחקר ופיתוח, מזכירות ועדת הלסינקי ומערך המתאמות'],
+        ['4', 'אגף רכש והתקשרויות, מערכות מידע']
+      ],
+      tips: ['ועדת טכנולוגיות רפואיות מתכנסת בחדר הוועדות, קומה 2', 'קבלת קהל במש״א: א׳, ג׳, ה׳ בין 09:00 ל-13:00']
+    },
+    parking: {
+      name: 'החניון המרכזי',
+      badge: '3 קומות תת-קרקעיות',
+      color: 'linear-gradient(135deg,#a2aabc,#6f7a91)',
+      lead: 'חניון העובדים והמבקרים, עם כניסה מהשער הדרומי ויציאה למעבר תת-קרקעי אל מגדל סמי עופר.',
+      floors: [
+        ['1−', 'מבקרים ומטופלים · תשלום בקופה אוטומטית'],
+        ['2−', 'עובדים עם תו חניה בתוקף · זיהוי בלוחית רישוי'],
+        ['3−', 'תורנים, כוננים ורכבי מערך התחבורה'],
+        ['0',  'רציפי איסוף להסעות צוות — רציף 1 ו-2, שער מזרחי']
+      ],
+      tips: ['תו חניה לעובד — בקשה מקוונת דרך מרכז השירות לעובד', 'עמדות טעינה לרכב חשמלי בקומה 2−, שורה D']
+    },
+    er: {
+      name: 'מלר״ד — מיון מבוגרים',
+      badge: 'פעיל 24/7',
+      color: 'linear-gradient(135deg,#e8398f,#b81260)',
+      lead: 'המחלקה לרפואה דחופה, כולל מיון פנימי, כירורגי, אורתופדי וחדר הלם. כניסת אמבולנסים נפרדת מהשער המזרחי.',
+      floors: [
+        ['0', 'קבלה, מיון ראשוני (טריאז׳), חדרי הלם וצילום'],
+        ['1', 'יחידת אשפוז יום ומיון פנימי מורחב'],
+        ['1−', 'מעבר ישיר להדמיה דחופה ולמעבדה']
+      ],
+      tips: ['הפעלת חמ״ל אר״ן — כניסה דרך השער המזרחי בלבד', 'צוותים המגיעים בקריאת כוננות: חניית תורנים בקומה 3−']
+    }
+  };
+
+  const bldgPanel = $('#bldgPanel');
+  function renderBuilding(key) {
+    const b = BUILDINGS[key];
+    if (!b) return;
+    bldgPanel.innerHTML =
+      '<div data-searchable data-tags="' + b.name + ' ' + b.badge + ' קומות התמצאות מפה בניין">' +
+        '<div class="flex items-start justify-between gap-3 mb-2">' +
+          '<div>' +
+            '<h3 class="font-display font-black text-[17px] tracking-tight">' + b.name + '</h3>' +
+            '<span class="inline-block mt-1 text-[11px] font-black text-white px-2.5 py-1 rounded-full" style="background:' + b.color + '">' + b.badge + '</span>' +
+          '</div>' +
+        '</div>' +
+        '<p class="text-[12.5px] text-ink-600 leading-relaxed mb-3">' + b.lead + '</p>' +
+        '<div class="space-y-1.5 mb-3">' +
+          b.floors.map(f =>
+            '<div class="flex items-start gap-3 bg-white/80 rounded-2xl px-3.5 py-2.5 border border-ink-100">' +
+              '<span class="shrink-0 min-w-[42px] text-center text-[11.5px] font-black text-rambam-700 bg-rambam-50 border border-rambam-100 rounded-lg py-1">' + f[0] + '</span>' +
+              '<span class="text-[12.5px] text-ink-600 leading-snug pt-0.5">' + f[1] + '</span>' +
+            '</div>').join('') +
+        '</div>' +
+        '<div class="bg-rambam-50/70 border border-rambam-100 rounded-2xl p-3.5">' +
+          '<div class="text-[11.5px] font-black text-rambam-800 mb-1">טוב לדעת</div>' +
+          b.tips.map(t => '<div class="text-[12px] text-ink-600 leading-relaxed">· ' + t + '</div>').join('') +
+        '</div>' +
+      '</div>';
+  }
+
+  $$('.bldg').forEach(g => {
+    const act = () => {
+      $$('.bldg').forEach(x => x.classList.remove('active'));
+      g.classList.add('active');
+      renderBuilding(g.dataset.bldg);
+    };
+    g.addEventListener('click', act);
+    g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); } });
+  });
+  $('.bldg[data-bldg="ofer"]').classList.add('active');
+  renderBuilding('ofer');
+
+  /* =======================================================================
+     7. העוזר הדיגיטלי (צ׳אטבוט פנימי)
+     ======================================================================= */
+  const fab = $('#fab'), chatWindow = $('#chatWindow'), chatBody = $('#chatBody');
+  const chatForm = $('#chatForm'), chatInput = $('#chatInput');
+
+  const KB = [
+    {
+      k: ['הסע', 'הסעה', 'הסעות', 'מזמינים הסעה', 'הזמנת הסעה', 'קשב', 'קש״ב', 'נסיע', 'מונית', 'רכב'],
+      a: '<b>הזמנת הסעה דרך מערכת קש״ב</b><br>נכנסים למערכת קש״ב מהפורטל, בוחרים סוג נסיעה (משמרת · תורנות · קריאת כוננות), מוצא ויעד ומועד. ההזמנה נדרשת עד 60 דקות מראש; בקריאת חירום ההזמנה מיידית באישור אחראי המשמרת.<br>· ביטול ללא חיוב עד 20 דקות לפני הנסיעה.<br>· רציפי האיסוף: קומה 0 בחניון המרכזי, רציף 1 ו-2 בשער המזרחי.<br>· תמיכה: מוקד תחבורה, שלוחה 2480.'
+    },
+    {
+      k: ['הלסינק', 'פרוטוקול', 'מטרות', 'אתיק', 'מחקר בבני אדם', 'אישור מחקר'],
+      a: '<b>הגשה לוועדת הלסינקי דרך מערכת ״מטרות״</b><br>1. פתיחת תיק מחקר במערכת והגדרת סוג המחקר.<br>2. העלאת פרוטוקול, טופס הסכמה מדעת, קורות חיים ותעודת GCP בתוקף, חוברת לחוקר ותקציב.<br>3. בדיקה מנהלית — עד 5 ימי עבודה.<br>4. דיון בוועדה, המתכנסת אחת לחודש (מסלול מקוצר למחקרים בסיכון מזערי).<br>5. גיוס משתתפים רק לאחר מכתב אישור חתום. האישור בתוקף לשנה וטעון חידוש 60 יום מראש.<br>· מזכירות הוועדה: שלוחה 3900.'
+    },
+    {
+      k: ['ציוד', 'טכנולוג', 'ויסמן', 'מכשיר', 'ועדת טכנולוגיות', 'תרומה'],
+      a: '<b>הכנסת ציוד או טכנולוגיה רפואית חדשה</b><br>כל ציוד, מכשיר או טכנולוגיה — כולל תרומה, השאלה מחברה או ציוד לניסוי — טעונים אישור מוקדם של <b>ועדת הטכנולוגיות הרפואיות בראשות ד״ר ויסמן</b>.<br>· מגישים: טופס בקשה, מפרט טכני, אישור AMAR / CE / FDA, הערכת עלות-תועלת וחוות דעת הנדסה רפואית.<br>· הוועדה מתכנסת אחת לרבעון; חלון ההגשה נסגר 14 יום לפני הישיבה.<br>· רק לאחר אישור הוועדה ניתן לפתוח דרישת רכש. מזכירות: שלוחה 2455.'
+    },
+    {
+      k: ['שכר', 'תלוש', 'משולם', 'מתי מקבל', 'הפרש', '106'],
+      a: '<b>שכר ותלושים</b><br>· השכר משולם ב-1 בכל חודש עבור החודש שחלף; חל המועד בשבת או בחג — מוקדם ליום העסקים שלפניו.<br>· התלוש זמין באזור האישי בפורטל, יחד עם טופס 106 השנתי.<br>· דיווח שאושר לאחר סגירת השכר משולם כהפרש בתלוש העוקב, בשורה נפרדת.<br>· בירורים: מדור שכר וחשבות, שלוחה 2215.'
+    },
+    {
+      k: ['שעות נוספות', 'נוספות', '125', 'גלובלי'],
+      a: '<b>שעות נוספות</b><br>שעה נוספת מוכרת רק אם אושרה מראש על ידי מנהל היחידה ודווחה במערכת הנוכחות באותו יום.<br>· שתי השעות הראשונות — 125%; משעה שלישית — 150%.<br>· עבודה במנוחה שבועית — 150% ומעלה לפי ההסכם.<br>· עובדים במתכונת גלובלית מדווחים נוכחות מלאה ואינם זכאים לתשלום נוסף מעבר למכסה.'
+    },
+    {
+      k: ['תורנות', 'כוננות', 'סידור עבודה', 'החלפ'],
+      a: '<b>תורנויות וכוננויות</b><br>· הסידור מפורסם עד ה-25 בחודש הקודם.<br>· החלפת תורנות מחייבת אישור מנהל המחלקה ועדכון בסידור הרשמי — החלפה שלא עודכנה אינה משולמת.<br>· כוננות מזכה בתשלום כוננות; קריאה בפועל מזכה גם בשעות עבודה ובהסעה דרך קש״ב.<br>· מנוחה לאחר תורנות היא זכות וחובה, בתיאום כיסוי מחלקתי.'
+    },
+    {
+      k: ['נוכחות', 'דיווח', 'חילן', 'החתמ', 'תיקון דיווח'],
+      a: '<b>דיווח נוכחות</b><br>החתמת כניסה ויציאה מתבצעת במערכת הנוכחות, ממחשב או מהנייד. תיקון דיווח אפשרי עד ה-5 בחודש העוקב; לאחר מכן נדרשת פנייה למדור שכר (שלוחה 2215). יתרות חופשה, מחלה והשתלמות מוצגות באזור האישי בזמן אמת.'
+    },
+    {
+      k: ['חופש', 'מחלה', 'הבראה', 'היעדרות', 'ילד חולה'],
+      a: '<b>חופשה, מחלה והבראה</b><br>· בקשת חופשה מוגשת במערכת הנוכחות ומאושרת דיגיטלית על ידי המנהל.<br>· אישור מחלה נסרק ומועלה תוך 3 ימי עבודה; מחלת ילד, מחלת הורה והיריון מדווחים בקודים נפרדים.<br>· דמי הבראה משולמים אחת לשנה לפי ותק והיקף משרה.'
+    },
+    {
+      k: ['החזר נסיע', 'נסיעות', 'חניה', 'תו חניה', 'חניון'],
+      a: '<b>נסיעות וחניה</b><br>· החזר נסיעות חודשי — לכל עובד המתגורר מעל 500 מ׳ ממקום העבודה, לפי עלות ציבורית בפועל ותקרת ההסכם. עדכון כתובת בטופס 101.<br>· תו חניה לעובד — בקשה מקוונת דרך מרכז השירות לעובד, לפי מכסת המחלקה (אגף ביטחון, שלוחה 2610).<br>· חניית עובדים: קומה 2− בחניון המרכזי; תורנים וכוננים — קומה 3−.'
+    },
+    {
+      k: ['מתאמת', 'crc', 'קורדינטור', 'מתאמות'],
+      a: '<b>השכרת מתאמת מחקר (CRC)</b><br>שלושה מסלולים: חלקי (20%–40%), מלא (50%–100%) ופרויקטלי (תמחור לפי משתתף מגויס).<br>השירות כולל גיוס והחתמת הסכמה מדעת, תיאום ביקורים ודגימות, הזנת CRF ומענה לשאילתות, ליווי ביקורי ניטור, ניהול ה-ISF ודיווחי SAE.<br>· בקשת הקצאה מוגשת דרך אגף מו״פ; זמן הקצאה ממוצע — 3 שבועות מאישור התקציב. שלוחה 3900.'
+    },
+    {
+      k: ['קמיליון', 'תיק רפואי', 'רשומה', 'הרשא', 'סיסמ', 'תקלה', 'לא עובד'],
+      a: '<b>קמיליון — התיק הרפואי הממוחשב</b><br>· הרשאות נקבעות לפי תפקיד ומחלקה; צפייה ברשומה שאינה של מטופל שלך מתועדת בלוג ונבדקת.<br>· חלון תחזוקה קבוע: ליל שבת 23:30–02:00 — עובדים לפי נוהל Downtime ומתעדים בטפסי גיבוי.<br>· שליפת נתונים למחקר מחייבת אישור ועדת הלסינקי ופנייה ליחידת המידע הרפואי.<br>· נעילת משתמש או תקלה: מוקד מחשוב 4444, 24/7.'
+    },
+    {
+      k: ['רכש', 'דרישת רכש', 'מלאי', 'מחסן', 'ספק', 'חשבונית'],
+      a: '<b>רכש ולוגיסטיקה</b><br>מסלול האישורים: פותח הדרישה ← מנהל המחלקה ← בקרת תקציב ← אגף רכש.<br>· ציוד רפואי חדש מחייב אישור ועדת טכנולוגיות מצורף לדרישה.<br>· משיכת מלאי שוטף: הזמנה עד יום ג׳ בשעה 12:00 לאספקה בשבוע העוקב.<br>· חשבונית ללא אישור קבלת טובין במערכת לא תשולם. שלוחה 2530.'
+    },
+    {
+      k: ['סמי עופר', 'מגדל', 'קומה', 'מפה', 'התמצא', 'להגיע', 'בניין', 'קמפוס', 'מיון', 'רפפורט'],
+      a: '<b>התמצאות בקמפוס</b><br>· <b>מגדל סמי עופר</b> — אשפוז, קומות 0–12. כניסה מהלובי מול השער הדרומי; מעבר תת-קרקעי מהחניון המרכזי.<br>· <b>הבניין ההיסטורי</b> — מכונים, מעבדות, בנק ודואר.<br>· <b>רות רפפורט</b> — בית החולים לילדים ומיון ילדים.<br>· <b>מבנה המנהלה</b> — מש״א, שכר, רכש ואגף מו״פ.<br>לחצו על מבנה במפת הקמפוס בפורטל כדי לראות פירוט קומות מלא.'
+    },
+    {
+      k: ['אוכל', 'חדר אוכל', 'חדר האוכל', 'קפיטריה', 'מזנון', 'קפה', 'ארוחה', 'לאכול'],
+      a: '<b>מזון בקמפוס</b><br>· חדר אוכל מרכזי לעובדים — מבנה השירותים, קומה 0. בוקר 07:00–09:30, צהריים 12:00–15:30, חיוב בכרטיס עובד.<br>· מזנון וקפה בלובי סמי עופר — 06:30–21:00, בהנחת עובדים בהצגת תג.<br>· חנות נוחות ובית מרקחת ציבורי — לובי סמי עופר, 08:00–20:00.'
+    },
+    {
+      k: ['חירום', 'קוד כחול', 'החייאה', 'ביטחון', 'אבטחה', 'טלפון', 'שלוחה', 'מרכזייה'],
+      a: '<b>מוקדי חירום פנימיים (חיוג מכל טלפון פנימי)</b><br>· 2222 — קוד כחול, צוות החייאה<br>· 3333 — מוקד ביטחון ואבטחה<br>· 4444 — מוקד מחשוב ותמיכה<br>· 5555 — מוקד תחזוקה והנדסה<br>· 1911 — חמ״ל אירוע רב נפגעים<br>· 2000 — מרכזייה'
+    },
+    {
+      k: ['בטיחות', 'תאונת עבודה', 'גיהות', 'אירוע חריג', 'סיכונים', 'קרינה'],
+      a: '<b>בטיחות ודיווח אירועים</b><br>· ממונה בטיחות וגיהות — שלוחה 2870. תאונת עבודה מדווחת תוך 24 שעות.<br>· ניהול סיכונים ובטיחות המטופל — שלוחה 2777. דיווח על אירוע חריג או כמעט-אירוע הוא חובה ואינו הליך משמעתי.<br>· ממונה בטיחות קרינה — שלוחה 2612 (היתרי עבודה, דוזימטר, אישור מכשור).<br>· מניעת זיהומים — שלוחה 2340, כונן 24/7.'
+    },
+    {
+      k: ['מענק', 'גרנט', 'קול קורא', 'תקציב מחקר', 'מדד', 'kpi'],
+      a: '<b>מענקים ומדדי מחקר</b><br>· קול קורא פתוח: מענקי מחקר פנימיים לחוקרים צעירים, עד ₪ 120,000. מועד אחרון — 30 בנובמבר.<br>· השנה אושרו 186 מחקרים חדשים ונקלטו מענקים בהיקף ₪ 62.4M.<br>· זמן ממוצע מהגשה לאישור: 34 יום.<br>· ליווי בהגשה: אגף מו״פ, שלוחה 3900.'
+    },
+    {
+      k: ['הסכם', 'קיבוצי', 'דירוג', 'ועד', 'נציגות'],
+      a: '<b>הסכמים קיבוציים ונציגות</b><br>ההסכם החל עליך נקבע לפי הדירוג בתלוש: רופאים · אחים ואחיות · מקצועות הבריאות · מנהלי וטכני. ספריית ההסכמים המלאה זמינה בעולם התוכן ״זכויות ושכר״.<br>· ועד העובדים: שלוחה 2250, קבלת קהל ב׳ ו-ד׳ בין 10:00 ל-14:00.'
+    },
+    {
+      k: ['טופס', '101', 'אישור העסק', 'טפסים'],
+      a: '<b>טפסים אישיים</b><br>· טופס 101 — כרטיס עובד שנתי (חובה בתחילת כל שנה).<br>· טופס החזר הוצאות.<br>· בקשת חופשה או היעדרות.<br>· עדכון פרטים אישיים וחשבון בנק.<br>· בקשה לקרן השתלמות והשתלמות מקצועית.<br>כל הטפסים זמינים בעולם התוכן ״זכויות ושכר״ ובאזור האישי.'
+    }
+  ];
+
+  const FALLBACK = 'לא מצאתי נוהל מדויק לשאלה הזו. אפשר לנסח אחרת, או לבחור מאחד הנושאים המוצעים מעל שורת ההקלדה.<br><br>אם זה דחוף: מוקד מחשוב 4444 · מרכזייה 2000 · מרכז שירות לעובד, מבנה המנהלה קומה 0.';
+
+  function answerFor(q) {
+    const s = q.toLowerCase();
+    let best = null, bestHits = 0, bestLen = 0;
+    KB.forEach(item => {
+      let hits = 0, len = 0;
+      item.k.forEach(k => { if (s.indexOf(k.toLowerCase()) !== -1) { hits++; len += k.length; } });
+      if (hits > bestHits || (hits === bestHits && hits > 0 && len > bestLen)) {
+        bestHits = hits; bestLen = len; best = item;
+      }
+    });
+    return best ? best.a : FALLBACK;
+  }
+
+  function addMsg(html, who) {
+    const wrap = document.createElement('div');
+    wrap.className = who === 'me' ? 'flex justify-end' : 'flex justify-start';
+    wrap.innerHTML = who === 'me'
+      ? '<div class="bubble-user max-w-[86%] px-4 py-2.5 text-[13px] leading-relaxed text-white shadow-soft" style="background:linear-gradient(135deg,#d91b76,#b81260)">' + html + '</div>'
+      : '<div class="bubble-bot max-w-[92%] px-4 py-3 text-[13px] leading-relaxed bg-ink-50 border border-ink-200 text-ink-800">' + html + '</div>';
+    chatBody.appendChild(wrap);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    return wrap;
+  }
+
+  function typing() {
+    const w = document.createElement('div');
+    w.className = 'flex justify-start';
+    w.innerHTML = '<div class="bubble-bot px-4 py-3 bg-ink-50 border border-ink-200 flex gap-1.5">' +
+      '<span class="w-1.5 h-1.5 rounded-full bg-rambam-400 animate-bounce" style="animation-delay:0ms"></span>' +
+      '<span class="w-1.5 h-1.5 rounded-full bg-rambam-400 animate-bounce" style="animation-delay:140ms"></span>' +
+      '<span class="w-1.5 h-1.5 rounded-full bg-rambam-400 animate-bounce" style="animation-delay:280ms"></span></div>';
+    chatBody.appendChild(w);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    return w;
+  }
+
+  function ask(q) {
+    addMsg(q.replace(/</g, '&lt;'), 'me');
+    const t = typing();
+    setTimeout(() => { t.remove(); addMsg(answerFor(q), 'bot'); }, 480);
+  }
+
+  let chatGreeted = false;
+  function setChat(open) {
+    chatWindow.classList.toggle('hidden', !open);
+    fab.setAttribute('aria-expanded', String(open));
+    $('#fabIcon').innerHTML = open
+      ? '<path d="M6 6l12 12M18 6 6 18"/>'
+      : '<path d="M20.4 12.2c0 4-3.8 7.2-8.4 7.2-1 0-2-.15-2.9-.42L4 20.6l1.7-4.2A6.9 6.9 0 0 1 3.6 12.2C3.6 8.2 7.4 5 12 5s8.4 3.2 8.4 7.2Z"/><path d="M8.6 11.6h.01M12 11.6h.01M15.4 11.6h.01"/>';
+    if (open && !chatGreeted) {
+      chatGreeted = true;
+      addMsg('שלום ד״ר בלום 👋<br>אני העוזר הדיגיטלי של רמב״ם 360. אני עונה על שאלות בנושאי נהלים, מערכות, זכויות עובד, מחקר קליני והתמצאות בקמפוס.<br><br>אפשר לשאול בשפה חופשית — למשל: <span class="font-bold text-rambam-700">״איך מזמינים הסעה לתורנות?״</span>', 'bot');
+    }
+    if (open) setTimeout(() => chatInput.focus(), 120);
+  }
+
+  fab.addEventListener('click', () => setChat(chatWindow.classList.contains('hidden')));
+  $('#chatClose').addEventListener('click', () => setChat(false));
+  $('#helpTop').addEventListener('click', () => setChat(true));
+  chatForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const v = chatInput.value.trim();
+    if (!v) return;
+    chatInput.value = '';
+    ask(v);
+  });
+  $('#chatChips').addEventListener('click', e => {
+    const c = e.target.closest('.chip');
+    if (c) ask(c.textContent.trim());
+  });
+
+  /* =======================================================================
+     8. אנימציית כניסה עדינה לכרטיסים בגלילה
+     ======================================================================= */
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting) { en.target.classList.add('animate-floatUp'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -40px 0px', threshold: .06 });
+    $$('#worlds .glass, #wayfinding .glass, #quicklinks .glass').forEach(el => io.observe(el));
+  }
+})();
+</script>
+</body>
+</html>
