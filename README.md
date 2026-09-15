@@ -1,19 +1,29 @@
-# 💬 Chatbot template
+# Welcome to your Lovable project
 
-A simple Streamlit app that shows how to build a chatbot using OpenAI's GPT-3.5.
+This project was built with [Lovable](https://lovable.dev).
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chatbot-template.streamlit.app/)
+## Build with Lovable
 
-### How to run it on your own machine
+Open your project in the [Lovable editor](https://lovable.dev) and keep building.
 
-1. Install the requirements
+- **Ship faster**: describe what you want to build and Lovable handles the code.
+- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
+- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
 
-   ```
-   $ pip install -r requirements.txt
-   ```
+## Development
 
-2. Run the app
+Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+```sh
+git clone <this-repository-url>
+cd <repository-name>
+npm i
+npm run dev
+```
+
+## Built with
+
+- TanStack Start
+- TypeScript
+- React
+- Tailwind CSS
