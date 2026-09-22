@@ -1,0 +1,10 @@
+node_modules
+dist
+.vite
+*.local
+
+*.tsbuildinfo
+
+# ה-gitignore בשורש הריפו (תבנית Python) מתעלם מכל תיקייה בשם lib/.
+# כאן lib/ היא קוד מקור, ולכן מבטלים את ההתעלמות.
+!src/lib/
