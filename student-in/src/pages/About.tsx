@@ -1,4 +1,5 @@
 import { CONTENT_LAST_UPDATED, SOURCE_CIVIL_2022, SOURCE_RAMBAM_2026 } from '../data/rights';
+import { LOGO_ALT, LOGO_SRC } from '../lib/assets';
 
 export function About() {
   return (
@@ -36,10 +37,7 @@ export function About() {
       </p>
 
       <div className="about-logo">
-        <img
-          src="/rambam-logo.webp"
-          alt="מערך למידה ופיתוח ארגוני, רמב״ם - הקריה הרפואית לבריאות האדם"
-        />
+        <img src={LOGO_SRC} alt={LOGO_ALT} />
       </div>
     </div>
   );

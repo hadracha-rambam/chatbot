@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Info } from 'lucide-react';
 import { BottomNav, TopNav } from './Nav';
+import { LOGO_ALT, LOGO_SRC } from '../lib/assets';
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
@@ -21,6 +22,10 @@ export function Layout() {
         דילוג לתוכן הראשי
       </a>
 
+      <p className="draft-strip" role="note">
+        גרסת תצוגה - התוכן טרם אושר להפצה
+      </p>
+
       <header className="app-header">
         <div className="app-header__inner">
           <Link to="/" className="brand" aria-label="STUDENT iN - לדף הבית">
@@ -28,11 +33,7 @@ export function Layout() {
               STUDENT <i>iN</i>
             </span>
             <span className="brand__divider" aria-hidden="true" />
-            <img
-              className="brand__logo"
-              src="/rambam-logo.webp"
-              alt="מערך למידה ופיתוח ארגוני, רמב״ם - הקריה הרפואית לבריאות האדם"
-            />
+            <img className="brand__logo" src={LOGO_SRC} alt={LOGO_ALT} />
           </Link>
           <TopNav />
         </div>
