@@ -1,0 +1,870 @@
+import type { RightItem, CategoryId } from './types';
+
+/**
+ * מקורות התוכן.
+ *
+ * SOURCE_RAMBAM_2026 - שני כללי 2026 של רמב"ם. גוברים על הנוהל הישן בכל סתירה.
+ * SOURCE_CIVIL_2022  - נוהל העסקת סטודנטים בשירות המדינה, נציבות שירות המדינה.
+ */
+export const SOURCE_RAMBAM_2026 = 'עדכון רמב״ם 2026';
+export const SOURCE_CIVIL_2022 = 'נוהל העסקת סטודנטים בשירות המדינה';
+
+const RAMBAM_PLACEHOLDER = 'פרטי התהליך ברמב״ם יעודכנו כאן.';
+
+export const RIGHTS: RightItem[] = [
+  /* ---------------------------------------------------------------- */
+  /* השכר והעבודה שלי                                                  */
+  /* ---------------------------------------------------------------- */
+  {
+    id: 'monthly-hours',
+    category: 'work',
+    icon: 'clock',
+    question: 'כמה שעות מותר לי לעבוד בחודש?',
+    shortAnswer:
+      'ככלל, משרת סטודנט מוגדרת בהיקף של עד 96 שעות בחודש. בהתאם לצורך ולהסכמה ניתן להגדיל את ההיקף, אבל בכל מקרה לא ניתן לעבור 120 שעות בחודש.',
+    keyNumber: '120',
+    keyNumberLabel: 'מקסימום שעות בחודש',
+    chips: ['96 שעות · היקף משרה נפוץ'],
+    importantNote: '120 שעות הן תקרה חודשית ולא ניתן לחרוג ממנה.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_RAMBAM_2026,
+    sourceYear: 2026,
+    status: 'current_2026',
+    statusNote: 'כלל עדכני לשנת 2026.',
+    keywords: [
+      'שעות',
+      'מכסה',
+      'מכסת שעות',
+      'חודש',
+      'חודשי',
+      '120',
+      '96',
+      'היקף משרה',
+      'כמה שעות',
+      'תקרה',
+      'משרה',
+    ],
+    relatedIds: ['daily-hours', 'hours-quota', 'salary'],
+  },
+  {
+    id: 'daily-hours',
+    category: 'work',
+    icon: 'timer',
+    question: 'כמה שעות אפשר לעבוד ביום?',
+    shortAnswer: 'ניתן לדווח ולקבל שכר עבור עד 8 שעות עבודה ביום.',
+    keyNumber: '8',
+    keyNumberLabel: 'שעות עבודה ביום',
+    importantNote: 'עבודה מעבר ל-8 שעות ביום אינה מזכה בתשלום שעות נוספות.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_RAMBAM_2026,
+    sourceYear: 2026,
+    status: 'current_2026',
+    statusNote: 'כלל עדכני לשנת 2026.',
+    keywords: [
+      'שעות ביום',
+      'יום עבודה',
+      '8 שעות',
+      'עבדתי יותר',
+      'שעות נוספות',
+      'דיווח שעות',
+      'יומי',
+    ],
+    relatedIds: ['monthly-hours', 'hours-quota'],
+  },
+  {
+    id: 'hours-quota',
+    category: 'work',
+    icon: 'calendar',
+    question: 'מה נחשב בתוך מכסת השעות שלי?',
+    shortAnswer:
+      'מכסת השעות החודשית כוללת לא רק שעות עבודה בפועל, אלא גם היעדרויות מסוימות בתשלום.',
+    chips: [
+      'עבודה בפועל',
+      'חופשה',
+      'מחלה',
+      'חג',
+      'יום בחינה',
+      'יום בחירה',
+      'היעדרויות מאושרות נוספות',
+    ],
+    highlight: 'ימי מילואים אינם נכללים במכסת שעות ההעסקה החודשית.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: [
+      'מכסה',
+      'מה נכנס',
+      'נחשב',
+      'מה נחשב',
+      'מילואים',
+      'חופשה',
+      'מחלה',
+      'חג',
+      'יום בחינה',
+      'יום בחירה',
+      'היעדרות',
+    ],
+    relatedIds: ['monthly-hours', 'reserve-duty', 'holidays'],
+  },
+  {
+    id: 'salary',
+    category: 'work',
+    icon: 'wallet',
+    question: 'איך נקבע השכר שלי?',
+    shortAnswer:
+      'השכר במשרת סטודנט מחושב לפי שעות העבודה בפועל ובהתאם לסוג התואר שאותו לומדים.',
+    importantNote: 'השכר נקבע לפי התואר ולא לפי שנת הלימודים.',
+    placeholder: 'תעריפי השכר העדכניים יעודכנו כאן.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'needs_verification',
+    statusNote: 'טרם התקבלה טבלת שכר עדכנית לשנת 2026.',
+    keywords: [
+      'שכר',
+      'כמה מרוויחים',
+      'תעריף',
+      'שעתי',
+      'תלוש',
+      'תואר',
+      'משכורת',
+      'כסף',
+      'שכר שעתי',
+    ],
+    relatedIds: ['monthly-hours', 'who-is-student'],
+  },
+  {
+    id: 'employment-period',
+    category: 'work',
+    icon: 'briefcase',
+    question: 'כמה זמן אפשר לעבוד במשרת סטודנט?',
+    shortAnswer:
+      'תקופת ההעסקה הכוללת במשרת סטודנט בשירות המדינה מוגבלת לעד 5 שנים, בכפוף להמשך הזכאות כסטודנט.',
+    keyNumber: '5',
+    keyNumberLabel: 'שנים לכל היותר',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: [
+      'כמה זמן',
+      'תקופת העסקה',
+      '5 שנים',
+      'חמש שנים',
+      'ותק',
+      'משרת סטודנט',
+      'עד מתי',
+    ],
+    relatedIds: ['five-years', 'who-is-student'],
+  },
+  {
+    id: 'private-work',
+    category: 'work',
+    section: 'עבודה נוספת',
+    icon: 'briefcase',
+    question: 'יש לי עוד עבודה - צריך לדווח?',
+    shortAnswer:
+      'כן. עבודה נוספת מעבר למשרת הסטודנט בשירות המדינה דורשת קבלת היתר לעבודה פרטית בהתאם לכללים.',
+    highlight: 'אין לבצע עבודה פרטית ללא קבלת היתר כנדרש.',
+    rambamProcess: 'הליך הגשת הבקשה ברמב״ם יעודכן כאן.',
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: [
+      'עוד עבודה',
+      'עבודה נוספת',
+      'עבודה פרטית',
+      'היתר',
+      'אישור',
+      'שתי עבודות',
+      'עבודה שנייה',
+      'פרילנס',
+      'עסק',
+    ],
+    relatedIds: ['monthly-hours'],
+  },
+
+  /* ---------------------------------------------------------------- */
+  /* חופשה ומחלה                                                       */
+  /* ---------------------------------------------------------------- */
+  {
+    id: 'vacation',
+    category: 'timeoff',
+    icon: 'palm',
+    question: 'כמה ימי חופשה מגיעים לי?',
+    shortAnswer:
+      'הזכאות לימי חופשה נקבעת לפי מבנה שבוע העבודה במקום ההעסקה ולפי היקף המשרה.',
+    keyNumber: '12',
+    keyNumberLabel: 'ימי חופשה בשנה במקום עבודה של 5 ימים בשבוע',
+    secondary: 'במקום שבו נהוג שבוע עבודה של 6 ימים - 14 ימים בשנה.',
+    importantNote:
+      'הזכאות וניצול החופשה מושפעים מהיקף ההעסקה וממכסת השעות החודשית.',
+    expandable: [
+      {
+        title: 'עוד חשוב לדעת',
+        items: [
+          'חופשה מנוצלת בימים מלאים בהתאם לנוהל.',
+          'לא ניתן להוסיף יום חופשה בתשלום לאחר שכבר הושלמה מלוא מכסת השעות החודשית.',
+          'קיימים כללים לצבירת ימי חופשה.',
+        ],
+      },
+    ],
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: [
+      'חופשה',
+      'חופש',
+      'ימי חופשה',
+      'חופשה שנתית',
+      'לצאת לחופש',
+      'צבירה',
+      'חופשי',
+      '12',
+      '14',
+    ],
+    relatedIds: ['hours-quota', 'choice-days', 'holidays'],
+  },
+  {
+    id: 'sick-leave',
+    category: 'timeoff',
+    icon: 'thermometer',
+    question: 'אני חולה - מה מגיע לי?',
+    shortAnswer:
+      'התשלום ניתן עבור ימים שבהם היית אמור.ה לעבוד, ועד למכסת ימי המחלה שעומדת לרשותך.',
+    keyNumber: '18',
+    keyNumberPrefix: 'עד',
+    keyNumberLabel: 'ימי מחלה בשנה, בהתאם לחלקיות ההעסקה',
+    highlight: 'התשלום הוא מהיום הראשון',
+    importantNote:
+      'מכסת ימי המחלה עשויה לכלול בהתאם לכללים גם מחלת ילד, הורה או בן.בת זוג.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: [
+      'מחלה',
+      'חולה',
+      'ימי מחלה',
+      'אישור מחלה',
+      'חופשת מחלה',
+      'מחלת ילד',
+      'הורה',
+      'בן זוג',
+      'יום ראשון',
+      'חולה היום',
+    ],
+    relatedIds: ['declaration-days', 'hours-quota'],
+  },
+  {
+    id: 'declaration-days',
+    category: 'timeoff',
+    icon: 'fileCheck',
+    question: 'אפשר לקחת יום מחלה בלי אישור רפואי?',
+    shortAnswer:
+      'סטודנט.ית זכאי.ת לשני ימי הצהרה בשנה מתוך מכסת ימי המחלה, בהתאם לכללים.',
+    keyNumber: '2',
+    keyNumberLabel: 'ימי הצהרה בשנה',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: [
+      'יום הצהרה',
+      'ימי הצהרה',
+      'הצהרה',
+      'בלי אישור רפואי',
+      'אישור רפואי',
+      'מחלה בלי אישור',
+      'הצהרת מחלה',
+    ],
+    relatedIds: ['sick-leave'],
+  },
+
+  /* ---------------------------------------------------------------- */
+  /* לימודים ומבחנים                                                   */
+  /* ---------------------------------------------------------------- */
+  {
+    id: 'exam-day',
+    category: 'studies',
+    icon: 'graduation',
+    question: 'יש לי מבחן - מגיע לי יום היעדרות?',
+    shortAnswer:
+      'סטודנט.ית שהשלים.ה 12 חודשי עבודה זכאי.ת ליום היעדרות אחד בשנה לצורך השתתפות בבחינה במסגרת הלימודים.',
+    keyNumber: '1',
+    keyNumberLabel: 'יום היעדרות בשנה לאחר 12 חודשי עבודה',
+    secondary:
+      'מי שעבד.ה לפחות 3 חודשים אך פחות משנה עשוי.ה להיות זכאי.ת לחלק יחסי מהיום.',
+    steps: [
+      'לתאם מראש עם הממונה.',
+      'לבצע את התיאום לפחות שבועיים לפני מועד ההיעדרות.',
+      'לדווח את ההיעדרות בהתאם לתהליך ברמב״ם.',
+    ],
+    importantNote:
+      'לא ניתן לעבוד בפועל ובמקביל לדווח על היעדרות לבחינה באותו היום.',
+    expandable: [
+      {
+        title: 'ומה אם לא ניצלתי?',
+        items: [
+          'יום בחינה שלא נוצל יכול להיצבר לשנה העוקבת כל עוד ממשיכים להיות מועסקים כסטודנטים, בהתאם לכללים.',
+        ],
+      },
+    ],
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: [
+      'מבחן',
+      'בחינה',
+      'מבחנים',
+      'תקופת מבחנים',
+      'יום בחינה',
+      'יום מבחן',
+      'היעדרות',
+      'ללמוד',
+      'מועד ב',
+    ],
+    relatedIds: ['study-confirmation', 'hours-quota'],
+  },
+  {
+    id: 'study-confirmation',
+    category: 'studies',
+    icon: 'fileCheck',
+    question: 'צריך להגיש אישור לימודים?',
+    shortAnswer: 'כן. המשך העסקה במשרת סטודנט מותנה בהצגת אישור לימודים תקף.',
+    highlight:
+      'בלי אישור לימודים תקף, לא ניתן להמשיך את ההעסקה במשרת סטודנט.',
+    rambamProcess: 'איפה מגישים ברמב״ם? פרטי התהליך יעודכנו כאן.',
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: [
+      'אישור לימודים',
+      'אישור',
+      'שנת לימודים',
+      'להגיש',
+      'מסמכים',
+      'הרשמה',
+      'סמסטר',
+      'אוניברסיטה',
+      'מכללה',
+    ],
+    relatedIds: ['who-is-student', 'finished-degree'],
+  },
+  {
+    id: 'who-is-student',
+    category: 'studies',
+    icon: 'userCheck',
+    question: 'מי יכול להיות מועסק במשרת סטודנט?',
+    shortAnswer:
+      'הנוהל מגדיר אילו מסגרות לימוד מזכות בהעסקה במשרת סטודנט. אלה המסלולים המוכרים:',
+    eligibility: [
+      'לימודים לתואר ראשון',
+      'תואר ראשון נוסף',
+      'תואר שני',
+      'תואר שני נוסף',
+      'תואר שלישי',
+      'מוסד מוכר להשכלה גבוהה',
+      'הנדסאים וטכנאים במסגרות המוכרות',
+      'מכינה קדם-אקדמית',
+      'שנת השלמה במסלולים המוכרים בנוהל',
+    ],
+    importantNote:
+      'לימודי תעודה בלבד אינם מזכים בהעסקה במשרת סטודנט לפי הנוהל.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: [
+      'מי זכאי',
+      'תואר',
+      'תואר ראשון',
+      'תואר שני',
+      'דוקטורט',
+      'מכינה',
+      'הנדסאי',
+      'טכנאי',
+      'לימודי תעודה',
+      'סטודנט',
+      'זכאות',
+    ],
+    relatedIds: ['study-confirmation', 'salary'],
+  },
+
+  /* ---------------------------------------------------------------- */
+  /* הטבות וזכויות                                                     */
+  /* ---------------------------------------------------------------- */
+  {
+    id: 'pension',
+    category: 'benefits',
+    icon: 'piggy',
+    question: 'יש לי פנסיה גם כסטודנט.ית?',
+    shortAnswer: 'כן. בהתאם לנוהל קיימות הפרשות לביטוח פנסיוני.',
+    breakdown: [
+      {
+        title: 'מעסיק',
+        rows: [
+          { label: 'תגמולים', value: '7.5%' },
+          { label: 'פיצויים', value: '6%' },
+        ],
+      },
+      {
+        title: 'עובד.ת',
+        rows: [{ label: 'מהשכר המבוטח', value: '7%' }],
+      },
+    ],
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    statusNote: 'נתונים מתוך נוהל 2022 - יש לעדכן אם יתקבל חוזר חדש.',
+    keywords: [
+      'פנסיה',
+      'פנסיוני',
+      'ביטוח פנסיוני',
+      'הפרשות',
+      'תגמולים',
+      'פיצויים',
+      'קרן פנסיה',
+    ],
+    relatedIds: ['study-fund'],
+  },
+  {
+    id: 'study-fund',
+    category: 'benefits',
+    icon: 'trending',
+    question: 'יש לי קרן השתלמות?',
+    shortAnswer: 'בהתאם לנוהל, קיימת זכאות לקרן השתלמות.',
+    breakdown: [
+      {
+        title: 'מעסיק',
+        rows: [{ label: 'הפרשה', value: '7.5%' }],
+      },
+      {
+        title: 'עובד.ת',
+        rows: [{ label: 'הפרשה', value: '2.5%' }],
+      },
+    ],
+    importantNote: 'בקליטה נדרש להסדיר את הבחירה בהתאם לטפסים הרלוונטיים.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    statusNote: 'נתונים מתוך נוהל 2022.',
+    keywords: [
+      'קרן השתלמות',
+      'השתלמות',
+      'קרן',
+      'חיסכון',
+      'הפרשה',
+      'טפסים',
+      'קליטה',
+    ],
+    relatedIds: ['pension'],
+  },
+  {
+    id: 'travel',
+    category: 'benefits',
+    icon: 'bus',
+    question: 'מגיע לי החזר נסיעות?',
+    shortAnswer:
+      'כן. קיימת זכאות להשתתפות בהוצאות הנסיעה מהבית לעבודה ובחזרה עבור ימים שבהם עבדת בפועל, בהתאם לכללים ולתקרה הרלוונטית.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: [
+      'נסיעות',
+      'החזר נסיעות',
+      'הסעות',
+      'רב קו',
+      'תחבורה',
+      'דלק',
+      'חניה',
+      'נסיעה',
+    ],
+  },
+  {
+    id: 'recuperation',
+    category: 'benefits',
+    icon: 'sun',
+    question: 'אני זכאי.ת לדמי הבראה?',
+    shortAnswer:
+      'בהתאם לנוהל, סטודנט.ית זכאי.ת לקצובת הבראה המחושבת בהתאם להיקף העבודה.',
+    placeholder: 'הסכום העדכני יעודכן כאן.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: ['הבראה', 'דמי הבראה', 'קצובת הבראה', 'קצובה'],
+  },
+  {
+    id: 'clothing',
+    category: 'benefits',
+    icon: 'shirt',
+    question: 'יש לסטודנטים קצובת ביגוד?',
+    shortAnswer:
+      'בהתאם לנוהל, קיימת זכאות לקצובת ביגוד בהתאם להיקף העבודה ולכללים הרלוונטיים.',
+    placeholder: 'הסכום העדכני יעודכן כאן.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: ['ביגוד', 'קצובת ביגוד', 'בגדים', 'מדים'],
+  },
+  {
+    id: 'reserve-duty',
+    category: 'benefits',
+    icon: 'shield',
+    question: 'יצאתי למילואים - מה קורה עם העבודה?',
+    shortAnswer:
+      'תקופת מילואים מזכה בתשלום בהתאם לכללים ובכפוף להצגת אישור רשמי.',
+    highlight: 'ימי מילואים אינם נכללים בתוך מכסת שעות העבודה החודשית.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: [
+      'מילואים',
+      'צו 8',
+      'שירות מילואים',
+      'אישור מילואים',
+      'צבא',
+      'מכסה',
+    ],
+    relatedIds: ['hours-quota'],
+  },
+  {
+    id: 'holidays',
+    category: 'benefits',
+    icon: 'partyPopper',
+    question: 'מה קורה בחגים?',
+    shortAnswer:
+      'סטודנט.ית זכאי.ת לתשלום עבור ימי חג ומועד בהתאם לדת ולבחירה ובהתאם לכללים.',
+    importantNote:
+      'אם כבר הושלמה מלוא מכסת השעות החודשית, לא משולם תשלום נוסף מעבר למכסה.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: ['חג', 'חגים', 'מועד', 'ערב חג', 'חופשת חג', 'תשלום חג'],
+    relatedIds: ['hours-quota', 'holiday-gift'],
+  },
+  {
+    id: 'choice-days',
+    category: 'benefits',
+    icon: 'calendar',
+    question: 'מה זה יום בחירה?',
+    shortAnswer:
+      'בכפוף לתנאי הזכאות, סטודנט.ית זכאי.ת לשני ימי בחירה בשנה.',
+    keyNumber: '2',
+    keyNumberLabel: 'ימי בחירה בשנה',
+    secondary:
+      'במהלך ששת חודשי העבודה הראשונים ניתן לנצל יום בחירה אחד לאחר השלמת שלושה חודשי עבודה רצופים, בהתאם לכללים.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: ['יום בחירה', 'ימי בחירה', 'בחירה', 'יום חופשי'],
+    relatedIds: ['vacation', 'holidays'],
+  },
+  {
+    id: 'holiday-gift',
+    category: 'benefits',
+    section: 'רווחה והטבות',
+    icon: 'gift',
+    question: 'מגיע לי שי לחג?',
+    shortAnswer:
+      'סטודנט.ית המועסק.ת מעל 4 חודשים רצופים זכאי.ת לשי לחג בהתאם לנוהל.',
+    keyNumber: '4+',
+    keyNumberLabel: 'חודשי עבודה רצופים',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: ['שי לחג', 'שי', 'מתנה', 'חג', 'תלוש שי', 'רווחה'],
+    relatedIds: ['holidays'],
+  },
+  {
+    id: 'training',
+    category: 'benefits',
+    section: 'רווחה והטבות',
+    icon: 'bookOpen',
+    question: 'מותר לי להשתתף בקורסים והדרכות?',
+    shortAnswer:
+      'ניתן להשתתף בהכשרות מוסדיות בהתאם לתפקיד, לצורך המקצועי, לאישור ולתקציב.',
+    importantNote:
+      'שעות השתתפות מאושרות בהכשרה נחשבות לשעות עבודה מתוך המכסה החודשית.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: ['הדרכה', 'קורס', 'הכשרה', 'השתלמות', 'לימודים בעבודה', 'סדנה'],
+    relatedIds: ['hours-quota', 'not-included-training-bonus'],
+  },
+  {
+    id: 'team-days',
+    category: 'benefits',
+    section: 'רווחה והטבות',
+    icon: 'users',
+    question: 'סטודנטים יכולים להשתתף בימי גיבוש?',
+    shortAnswer:
+      'כן. בהתאם לנוהל סטודנטים זכאים להשתתף בימי גיבוש ובסיורים לימודיים בהתאם לכללים.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: ['גיבוש', 'יום גיבוש', 'סיור', 'סיור לימודי', 'כיף', 'צוות'],
+  },
+  {
+    id: 'sports',
+    category: 'benefits',
+    section: 'רווחה והטבות',
+    icon: 'dumbbell',
+    question: 'ומה לגבי פעילות ספורט?',
+    shortAnswer:
+      'בהתאם לנוהל קיימת אפשרות להשתתף בפעילות ספורט עד שעה וחצי בשבוע, בכפוף לתנאים.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'needs_verification',
+    statusNote: 'יש לוודא שהזכאות עדיין בתוקף בהתאם להסדרי 2026.',
+    keywords: ['ספורט', 'חדר כושר', 'פעילות ספורט', 'אימון', 'בריאות'],
+  },
+
+  /* ---------------------------------------------------------------- */
+  /* לא הכול כלול                                                      */
+  /* ---------------------------------------------------------------- */
+  {
+    id: 'not-included-training-bonus',
+    category: 'benefits',
+    section: 'לא הכול כלול',
+    icon: 'info',
+    question: 'גמול השתלמות',
+    shortAnswer: 'אין זכאות לגמול השתלמות לפי נוהל 2022.',
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'needs_verification',
+    statusNote: 'נוהל 2022 - ייבדק מול עדכוני 2026.',
+    keywords: ['גמול השתלמות', 'גמול', 'השתלמות'],
+  },
+  {
+    id: 'not-included-academic-funding',
+    category: 'benefits',
+    section: 'לא הכול כלול',
+    icon: 'info',
+    question: 'מימון לימודים אקדמיים',
+    shortAnswer: 'אין זכאות להשתתפות ברכישת השכלה אקדמית לפי הנוהל.',
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'needs_verification',
+    statusNote: 'נוהל 2022 - ייבדק מול עדכוני 2026.',
+    keywords: ['מימון לימודים', 'שכר לימוד', 'מלגה', 'השכלה אקדמית'],
+  },
+  {
+    id: 'not-included-standby',
+    category: 'benefits',
+    section: 'לא הכול כלול',
+    icon: 'info',
+    question: 'כוננות',
+    shortAnswer:
+      'ככלל, סטודנט אינו זכאי לתשלום עבור כוננות או קריאת פתע.',
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'needs_verification',
+    statusNote: 'נוהל 2022 - ייבדק מול עדכוני 2026.',
+    keywords: ['כוננות', 'קריאת פתע', 'תורנות'],
+  },
+  {
+    id: 'not-included-unpaid-leave',
+    category: 'benefits',
+    section: 'לא הכול כלול',
+    icon: 'info',
+    question: 'חל״ת',
+    shortAnswer: 'לפי נוהל 2022, סטודנט אינו זכאי לחל״ת.',
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'needs_verification',
+    statusNote: 'נוהל 2022 - ייבדק מול עדכוני 2026.',
+    keywords: ['חלת', 'חל״ת', 'חופשה ללא תשלום', 'הקפאה'],
+  },
+
+  /* ---------------------------------------------------------------- */
+  /* הורות ומשפחה                                                      */
+  /* ---------------------------------------------------------------- */
+  {
+    id: 'parental-rights',
+    category: 'family',
+    icon: 'family',
+    question: 'אילו זכויות יש לי כהורה?',
+    shortAnswer:
+      'לבדיקת הזכאות המלאה יש לפתוח את הזכות הרלוונטית.',
+    topics: [
+      { label: 'תקופת לידה והורות' },
+      { label: 'שעת הורות', targetId: 'parenting-hour' },
+      { label: 'מחלת ילד', targetId: 'sick-leave' },
+      { label: 'הורה לילד עם מוגבלות' },
+      { label: 'תוספת מעונות' },
+      { label: 'קייטנות' },
+    ],
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: [
+      'הורות',
+      'הורה',
+      'ילד',
+      'ילדים',
+      'לידה',
+      'מעונות',
+      'קייטנה',
+      'משפחה',
+      'מוגבלות',
+    ],
+    relatedIds: ['parenting-hour', 'pregnancy', 'fertility'],
+  },
+  {
+    id: 'parenting-hour',
+    category: 'family',
+    icon: 'baby',
+    question: 'מהי שעת הורות?',
+    shortAnswer:
+      'בהתאם לתנאים, הורה לילד עד גיל שנה המועסק לפחות 6 שעות רצופות ביום עשוי להיות זכאי לשעת הורות.',
+    expandable: [
+      {
+        title: 'איך זה נראה בפועל?',
+        items: [
+          'אושרו לך 6 שעות עבודה ביום? בהתאם לתנאים, ניתן לעבוד 5 שעות ולקבל דיווח של 6 שעות.',
+        ],
+      },
+    ],
+    importantNote: 'יש לבדוק זכאות פרטנית.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: [
+      'שעת הורות',
+      'הורות',
+      'תינוק',
+      'עד גיל שנה',
+      'שעת אם',
+      'הנקה',
+    ],
+    relatedIds: ['parental-rights'],
+  },
+  {
+    id: 'pregnancy',
+    category: 'family',
+    icon: 'heart',
+    question: 'יש זכאות להיעדר לבדיקות היריון?',
+    shortAnswer:
+      'כן. בהתאם לתנאים, קיימת זכאות להיעדר לצורך בדיקות רפואיות הקשורות בהיריון ללא ניכוי ממכסת החופשה או המחלה.',
+    importantNote: 'יש לבדוק זכאות פרטנית.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: [
+      'היריון',
+      'הריון',
+      'בדיקות',
+      'בדיקות היריון',
+      'רופא',
+      'בהריון',
+    ],
+    relatedIds: ['parental-rights', 'fertility'],
+  },
+  {
+    id: 'fertility',
+    category: 'family',
+    icon: 'heart',
+    question: 'מה לגבי טיפולי פוריות?',
+    shortAnswer:
+      'קיימות זכויות היעדרות בגין טיפולי פוריות בכפוף לאישור רפואי ולתנאים הקבועים בנוהל.',
+    importantNote: 'מומלץ לבדוק את הזכאות הפרטנית מול משאבי אנוש.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: ['פוריות', 'טיפולי פוריות', 'הפריה', 'טיפולים'],
+    relatedIds: ['pregnancy'],
+  },
+
+  /* ---------------------------------------------------------------- */
+  /* סיום ושינויים                                                     */
+  /* ---------------------------------------------------------------- */
+  {
+    id: 'finished-degree',
+    category: 'ending',
+    icon: 'door',
+    question: 'סיימתי את התואר - מה קורה עכשיו?',
+    shortAnswer:
+      'סיום חובות הלימודים משפיע על הזכאות להמשיך להיות מועסק.ת במשרת סטודנט.',
+    highlight:
+      'במקרים מסוימים, סיום העסקה עקב סיום הלימודים עשוי לזכות בפיצויי פיטורים, בכפוף לתנאים.',
+    importantNote:
+      'אם השלמת לפחות שנת עבודה אחת, יש לבדוק את זכאותך לפיצויי פיטורים.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: [
+      'סיום תואר',
+      'סיימתי',
+      'גמרתי',
+      'פיצויים',
+      'פיצויי פיטורים',
+      'סיום לימודים',
+      'סיום העסקה',
+      'תואר',
+    ],
+    relatedIds: ['study-confirmation', 'five-years'],
+  },
+  {
+    id: 'five-years',
+    category: 'ending',
+    icon: 'briefcase',
+    question: 'הגעתי ל-5 שנות העסקה - מה עכשיו?',
+    shortAnswer:
+      'השלמת חמש שנות העסקה במשרת סטודנט היא אחת העילות לסיום ההעסקה במעמד זה.',
+    highlight:
+      'בהתאם לנוהל, סיום העסקה בשל השלמת 5 שנים עשוי לזכות בפיצויי פיטורים בכפוף לתנאים.',
+    rambamProcess: RAMBAM_PLACEHOLDER,
+    source: SOURCE_CIVIL_2022,
+    sourceYear: 2022,
+    status: 'based_on_2022',
+    keywords: [
+      '5 שנים',
+      'חמש שנים',
+      'סיום העסקה',
+      'פיצויים',
+      'ותק',
+      'תקופת העסקה',
+    ],
+    relatedIds: ['employment-period', 'finished-degree'],
+  },
+];
+
+export const RIGHT_BY_ID: Record<string, RightItem> = RIGHTS.reduce(
+  (acc, right) => {
+    acc[right.id] = right;
+    return acc;
+  },
+  {} as Record<string, RightItem>,
+);
+
+export function getRightsByCategory(categoryId: CategoryId): RightItem[] {
+  return RIGHTS.filter((right) => right.category === categoryId);
+}
+
+export function getRight(id: string | undefined): RightItem | undefined {
+  return id ? RIGHT_BY_ID[id] : undefined;
+}
+
+/** תאריך עדכון התוכן, מוצג במסך "על המידע באפליקציה". */
+export const CONTENT_LAST_UPDATED = '2026';
