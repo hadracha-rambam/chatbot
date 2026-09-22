@@ -1010,3 +1010,19 @@
 .accordion.is-open .accordion__panel > div {
   visibility: visible;
 }
+
+/* ------------------------------------------------------------------ */
+/* פס גרסת תצוגה                                                       */
+/* ------------------------------------------------------------------ */
+
+.draft-strip {
+  background: var(--tone-orange-bg);
+  border-bottom: 1px solid var(--tone-orange-line);
+  color: var(--tone-orange);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-align: center;
+  padding: 5px var(--gutter);
+  line-height: 1.4;
+}
